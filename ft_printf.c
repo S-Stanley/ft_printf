@@ -4,12 +4,25 @@ t_res		ft_proxy(char *str, t_res res, va_list data)
 {
 	char 	*s;
 	t_width	width;
+	int	right;
+	char	sep;
 	
 	res.i++;
 	width.value = 0;
+	right = 0;
+	sep = ' ';
 	if (ft_is_flag(&str[res.i]))
 	{
-		printf("FLAG ");
+		if (str[res.i] == '0')
+		{
+			sep = '0';
+			res.i++;
+		}
+		if (str[res.i] == '-')
+		{	
+			right = 1;
+			res.i++;
+		}
 	}
 	if (ft_is_with(&str[res.i]))
 	{
@@ -22,7 +35,7 @@ t_res		ft_proxy(char *str, t_res res, va_list data)
 	s = get_value(str[res.i], data);
 
 	if (width.value)
-		s = ft_add_left(s, width.value); 
+		s = ft_add_left(s, width.value, sep); 
 	res.str = ft_join(res.str, s);
 	res.i++;
 	return (res);

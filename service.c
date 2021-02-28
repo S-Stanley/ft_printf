@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char		*ft_add_left(char *s, int size_min)
+char		*ft_add_left(char *s, int size_min, char sep)
 {
 	int	size;
 	char	*s2;
@@ -13,7 +13,7 @@ char		*ft_add_left(char *s, int size_min)
 	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
 	while (size-- > 0)
 	{
-		s2[i] = ' ';
+		s2[i] = sep;
 		i++;
 	}
 	while (s[x])
