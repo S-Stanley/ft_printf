@@ -31,6 +31,11 @@ int		ft_intlen(int nb);
 t_flag          init_flags();
 char		*ft_strndup(char *str, int max);
 int		ft_atoi(char *str);
+char		*ft_itoa_hexa_min(int nb);
+char    	*ft_itoa_hexa_maj(int nb);
+char		*ft_putinsigned_int(int nbr);
+char		*str_that_address(int nb);
+int		ft_count_hexa(int nb);
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left(char *s, int size_min, char sep);
