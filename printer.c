@@ -5,7 +5,7 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	char *s;
 
         s = get_value(str[res.i], data);
-        if (flag.precis)
+	if (flag.precis)
         {
                 if (str[res.i] == 's')
                         s = ft_strndup(s, flag.precis);

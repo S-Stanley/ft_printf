@@ -27,7 +27,8 @@ char	*str_that_address(int nb)
 	str = malloc(sizeof(char) * (ft_intlen(n) + 1));
 	while (n / container >= 16)
 		container = container * 16;
-	write(1, "0x", 2);
+	str[++i] = '0';
+	str[++i] = 'x';
 	while (container > 0)
 	{
 		tmp = n / container + '0';
