@@ -16,9 +16,11 @@ t_res		ft_proxy(char *str, t_res res, va_list data)
 		flag = get_width(str, res, data, flag);
 		res.i = flag.i;
 	}
-	if (str[res.i] == '*')
 	if (ft_is_prevision(&str[res.i]))
-		printf("PRECISION ");
+	{
+		flag = ft_get_precision(str, res, data, flag);
+		res.i = flag.i;
+	}
 	return (ft_printer(str, res, data, flag));
 }
 

@@ -1,5 +1,26 @@
 #include "ft_printf.h"
 
+t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag)
+{
+	res.i++;
+	if (str[res.i] == '*')
+	{
+		flag.precis = va_arg(data, int);
+		res.i++;
+	}
+	else
+	{
+		while (str[res.i] >= '1' && str[res.i] <= '9')
+		{
+			flag.precis = (flag.precis * 10) + (str[res.i] - 48);
+			res.i++;
+		}		
+	}
+	flag.sep = '0';
+	flag.i = res.i;
+	return (flag);
+}
+
 t_flag		ft_get_flag(t_flag flag, t_res res, char *str)
 {
 	if (str[res.i] == '0')

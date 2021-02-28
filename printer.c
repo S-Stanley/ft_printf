@@ -12,6 +12,10 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
                 else
                         s = ft_add_left(s, flag.width, flag.sep);
         }
+	if (flag.precis)
+	{
+		s = ft_add_left(s, flag.precis, flag.sep);		
+	}
         res.str = ft_join(res.str, s);
         res.i++;
 	return (res);

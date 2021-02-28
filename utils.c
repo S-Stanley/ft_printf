@@ -7,6 +7,7 @@ t_flag          init_flags()
         flag.width = 0;
         flag.right = 0;
         flag.sep = ' ';
+	flag.precis = 0;
         return (flag);
 }
 
