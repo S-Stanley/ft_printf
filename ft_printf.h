@@ -8,10 +8,12 @@ typedef struct s_res {
 	char	*str;
 }	t_res;
 
-typedef struct s_width {
-	int	value;
+typedef struct s_flag {
+	int	width;
 	int	i;
-}	t_width;
+	int	right;
+	char	sep;
+}	t_flag;
 
 int             ft_printf(const char *str, ...);
 t_res		ft_proxy(char *str, t_res res, va_list data);
@@ -26,8 +28,9 @@ char		*ft_itoa(int nb);
 char		*reverse_table(char *str);
 int		ft_intlen(int nb);
 
-t_width		get_width(char *str, t_res res, va_list data);
+t_flag		get_width(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left(char *s, int size_min, char sep);
+char            *ft_add_right(char *s, int size_min, char sep);
 
 int		ft_is_flag(char *str);
 int		ft_is_with(char *str);

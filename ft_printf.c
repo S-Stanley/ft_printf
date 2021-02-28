@@ -3,39 +3,42 @@
 t_res		ft_proxy(char *str, t_res res, va_list data)
 {
 	char 	*s;
-	t_width	width;
-	int	right;
-	char	sep;
+	t_flag	flag;
 	
 	res.i++;
-	width.value = 0;
-	right = 0;
-	sep = ' ';
+	flag.width = 0;
+	flag.right = 0;
+	flag.sep = ' ';
 	if (ft_is_flag(&str[res.i]))
 	{
 		if (str[res.i] == '0')
 		{
-			sep = '0';
+			flag.sep = '0';
 			res.i++;
 		}
 		if (str[res.i] == '-')
 		{	
-			right = 1;
+			flag.right = 1;
 			res.i++;
 		}
 	}
 	if (ft_is_with(&str[res.i]))
 	{
-		width = get_width(str, res, data);
-		res.i = width.i;
+		flag = get_width(str, res, data, flag);
+		res.i = flag.i;
 	}
 	if (str[res.i] == '*')
 	if (ft_is_prevision(&str[res.i]))
 		printf("PRECISION ");
 	s = get_value(str[res.i], data);
 
-	if (width.value)
-		s = ft_add_left(s, width.value, sep); 
+	if (flag.width)
+	{
+		if (flag.right)
+			s = ft_add_right(s, flag.width, flag.sep);
+		else
+			s = ft_add_left(s, flag.width, flag.sep); 
+	}
 	res.str = ft_join(res.str, s);
 	res.i++;
 	return (res);
