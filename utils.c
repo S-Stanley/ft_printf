@@ -1,5 +1,27 @@
 #include "ft_printf.h"
 
+int		ft_atoi(char *str)
+{
+	int	nb;
+	int	i;
+	int	minus;
+
+	minus = 1;
+	nb = 0;
+	i = 0;
+	if (str[i] == '-')
+	{
+		minus = -1;
+		i++;
+	}
+	while (str[i])
+	{
+		nb = (nb * 10) + (str[i] - 48);
+		i++;
+	}
+	return (nb * minus);
+}
+
 char		*ft_strndup(char *str, int max)
 {
 	int	i;
@@ -104,11 +126,18 @@ char	*ft_itoa(int nb)
 {
 	int	i;
 	char	*s;
+	int	minus;
 
 	i = 0;
-	s = malloc(sizeof(char) * (ft_intlen(nb) + 1));
+	minus = 0;
+	s = malloc(sizeof(char) * (ft_intlen(nb) + 2));
 	if (!s)
 		return (NULL);
+	if (nb < 0)
+	{
+		nb = -nb;
+		minus = 1;
+	}
 	while (nb >= 1)
 	{
 		s[i] = (nb % 10) + 48;
@@ -116,7 +145,10 @@ char	*ft_itoa(int nb)
 		nb = nb / 10;
 	}
 	s[i] = '\0';
-	return (reverse_table(s));
+	s = reverse_table(s);
+	if (minus)
+		s = ft_join("-", s);
+	return (s);
 }
 
 char	*reverse_table(char *str)

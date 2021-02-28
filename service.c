@@ -46,7 +46,13 @@ char            *ft_add_right(char *s, int size_min, char sep)
         i = 0;
         size = size_min - ft_strlen(s);
         s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
-        while (s[i])
+        if (ft_atoi(s) < 0)
+        {
+                s2[i] = '-';
+                i++;
+                s = ft_itoa(ft_atoi(s) * -1);
+        }
+	while (s[i])
         {
                 s2[i] = s[i];
                 i++;
@@ -68,6 +74,12 @@ char		*ft_add_left(char *s, int size_min, char sep)
 	x = 0;
 	size = size_min - ft_strlen(s);
 	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
+	if (ft_atoi(s) < 0)
+	{
+		s2[i] = '-';
+		i++;
+		s = ft_itoa(ft_atoi(s) * -1);
+	}
 	while (size-- > 0)
 	{
 		s2[i] = sep;
