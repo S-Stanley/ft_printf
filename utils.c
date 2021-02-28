@@ -56,6 +56,8 @@ char	*get_value(char c, va_list data)
 		return (va_arg(data, char *));
 	if (c == 'd' || c == 'i')
 		return (ft_itoa(va_arg(data, int)));
+	if (c == '%')
+		return (ft_strdup("%"));
 	return (ft_strdup(""));
 }
 

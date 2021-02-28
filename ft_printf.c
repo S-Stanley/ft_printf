@@ -26,38 +26,56 @@ char		*ft_add_left(char *s, int size_min)
 	return (s2);
 }
 
+typedef struct s_width{
+	int	value;
+	int	i;
+}	t_width;
+
+t_width		get_width(char *str, t_res res, va_list data)
+{
+	t_width	width;
+
+	width.value = 0;
+	if (str[res.i] == '*')
+	{
+		width.value = va_arg(data, int);
+		res.i++;
+	}
+	else
+	{
+		while (str[res.i] >= '1' && str[res.i] <= '9')
+		{
+			width.value = (width.value * 10) + (str[res.i] - 48);
+			res.i++;
+		}
+	}
+	width.i = res.i;
+	return (width);
+}
+
 t_res		ft_proxy(char *str, t_res res, va_list data)
 {
 	char 	*s;
-	int	width;
+	t_width	width;
 	
 	res.i++;
-	width = 0;
+	width.value = 0;
 	if (ft_is_flag(&str[res.i]))
 	{
 		printf("FLAG ");
 	}
 	if (ft_is_with(&str[res.i]))
 	{
-		if (str[res.i] == '*')
-			printf("star");
-		else
-		{
-			while (str[res.i] >= '1' && str[res.i] <= '9')
-			{
-				width = (width * 10) + (str[res.i] - 48);
-				res.i++;
-			}
-		}
+		width = get_width(str, res, data);
+		res.i = width.i;
 	}
+	if (str[res.i] == '*')
 	if (ft_is_prevision(&str[res.i]))
 		printf("PRECISION ");
-	if (ft_isletter(&str[res.i]))
-		s = get_value(str[res.i], data);
+	s = get_value(str[res.i], data);
 
-
-	if (width)
-		s = ft_add_left(s, width); 
+	if (width.value)
+		s = ft_add_left(s, width.value); 
 	res.str = ft_join(res.str, s);
 	res.i++;
 	return (res);
