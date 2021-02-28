@@ -72,6 +72,8 @@ char    *ft_itoa_hexa_min(int nb)
         int     minus;
 	int	c;
 
+	if (nb == 0)
+                return (ft_strdup("0"));
         i = 0;
         minus = 0;
         s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
@@ -105,6 +107,8 @@ char    *ft_itoa_hexa_maj(int nb)
         int     minus;
         int     c;
 
+	if (nb == 0)
+                return (ft_strdup("0"));
         i = 0;
         minus = 0;
         s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
@@ -269,6 +273,8 @@ char	*ft_itoa(int nb)
 	char	*s;
 	int	minus;
 
+	if (nb == 0)
+		return (ft_strdup("0"));
 	i = 0;
 	minus = 0;
 	s = malloc(sizeof(char) * (ft_intlen(nb) + 2));

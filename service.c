@@ -73,7 +73,7 @@ char		*ft_add_left(char *s, int size_min, char sep)
 	x = 0;
 	size = size_min - ft_strlen(s);
 	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
-	if (ft_atoi(s) < 0)
+	if (ft_atoi(s) < 0 && sep == '0')
 	{
 		s2[i] = '-';
 		i++;
