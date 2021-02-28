@@ -49,3 +49,36 @@ char            *ft_joinchar(char *str, char c)
         s[++i] = '\0';
         return (s);
 }
+
+char	*get_value(char c, va_list data)
+{
+	if (c == 's')
+		return (va_arg(data, char *));
+	return (ft_strdup(""));
+}
+
+char	*ft_join(char *s1, char *s2)
+{
+	int	i;
+	int	x;
+	char	*s;
+
+	i = 0;
+	x = 0;
+	s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s)
+		return (NULL);
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	while (s2[x])
+	{
+		s[i] = s2[x];
+		x++;
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
