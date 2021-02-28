@@ -1,5 +1,15 @@
 #include "ft_printf.h"
 
+t_flag          init_flags()
+{
+        t_flag flag;
+
+        flag.width = 0;
+        flag.right = 0;
+        flag.sep = ' ';
+        return (flag);
+}
+
 char		*ft_strdup(char *str)
 {
 	char	*s;

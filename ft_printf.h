@@ -27,10 +27,13 @@ char		*ft_join(char *s1, char *s2);
 char		*ft_itoa(int nb);
 char		*reverse_table(char *str);
 int		ft_intlen(int nb);
+t_flag          init_flags();
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left(char *s, int size_min, char sep);
 char            *ft_add_right(char *s, int size_min, char sep);
+t_flag		ft_get_flag(t_flag flag, t_res res, char *str);
+t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag);
 
 int		ft_is_flag(char *str);
 int		ft_is_with(char *str);

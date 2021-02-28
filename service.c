@@ -1,5 +1,21 @@
 #include "ft_printf.h"
 
+t_flag		ft_get_flag(t_flag flag, t_res res, char *str)
+{
+	if (str[res.i] == '0')
+	{
+		flag.sep = '0';
+		res.i++;
+	}
+	if (str[res.i] == '-')
+	{
+		flag.right = 1;
+		res.i++;
+	}
+	flag.i = res.i;
+	return (flag);
+}
+
 char            *ft_add_right(char *s, int size_min, char sep)
 {
         int     size;
