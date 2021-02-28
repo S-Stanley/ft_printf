@@ -54,7 +54,62 @@ char	*get_value(char c, va_list data)
 {
 	if (c == 's')
 		return (va_arg(data, char *));
+	if (c == 'd' || c == 'i')
+		return (ft_itoa(va_arg(data, int)));
 	return (ft_strdup(""));
+}
+
+int	ft_intlen(int nb)
+{
+	int	i;
+
+	i = 0;
+	while (nb >= 1)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int nb)
+{
+	int	i;
+	char	*s;
+
+	i = 0;
+	s = malloc(sizeof(char) * (ft_intlen(nb) + 1));
+	if (!s)
+		return (NULL);
+	while (nb >= 1)
+	{
+		s[i] = (nb % 10) + 48;
+		i++;
+		nb = nb / 10;
+	}
+	s[i] = '\0';
+	return (reverse_table(s));
+}
+
+char	*reverse_table(char *str)
+{
+	char	*s;
+	int	i;
+	int	x;
+
+	i = 0;
+	x = ft_strlen(str) - 1;
+	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!s)
+		return (NULL);
+	while (x >= 0)
+	{
+		s[i] = str[x];
+		i++;
+		x--;
+	}
+	s[i] = '\0';
+	return (s);
 }
 
 char	*ft_join(char *s1, char *s2)

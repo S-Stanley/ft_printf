@@ -17,6 +17,8 @@ void		ft_putstr(char *str);
 char		*ft_strdup(char *str);
 char		*get_value(char c, va_list data);
 char		*ft_join(char *s1, char *s2);
+char		*ft_itoa(int nb);
+char		*reverse_table(char *str);
 
 int		ft_is_flag(char *str);
 int		ft_is_with(char *str);
