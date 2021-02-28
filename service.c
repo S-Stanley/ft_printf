@@ -16,7 +16,6 @@ t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag)
 			res.i++;
 		}		
 	}
-	flag.sep = '0';
 	flag.i = res.i;
 	return (flag);
 }
