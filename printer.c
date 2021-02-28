@@ -14,7 +14,10 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
         }
 	if (flag.precis)
 	{
-		s = ft_add_left(s, flag.precis, flag.sep);		
+		if (str[res.i] == 's')
+			s = ft_strndup(s, flag.precis);
+		else
+			s = ft_add_left(s, flag.precis, flag.sep);		
 	}
         res.str = ft_join(res.str, s);
         res.i++;

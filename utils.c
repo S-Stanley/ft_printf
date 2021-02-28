@@ -1,5 +1,20 @@
 #include "ft_printf.h"
 
+char		*ft_strndup(char *str, int max)
+{
+	int	i;
+	char	*s;
+
+	i = -1;
+	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!s)
+		return (NULL);
+	while (str[++i] && i < max)
+		s[i] = str[i];
+	s[i] = '\0';
+	return (s);
+}
+
 t_flag          init_flags()
 {
         t_flag flag;
