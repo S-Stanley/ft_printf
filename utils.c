@@ -247,7 +247,7 @@ char	*get_value(char c, va_list data)
 	if (c == 'p')
 		return (str_that_address(va_arg(data, int)));
 	if (c == 'u')
-		return (str_that_address(va_arg(data, int)));
+		return (ft_putinsigned_int(va_arg(data, int)));
 	if (c == 'c')
 		return (ft_joinchar("", (char)va_arg(data, int)));
 	if (c == '%')
