@@ -10,7 +10,7 @@ t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag)
 	}
 	else
 	{
-		while (str[res.i] >= '1' && str[res.i] <= '9')
+		while (str[res.i] >= '0' && str[res.i] <= '9')
 		{
 			flag.precis = (flag.precis * 10) + (str[res.i] - 48);
 			res.i++;
@@ -72,6 +72,7 @@ char		*ft_add_left(char *s, int size_min, char sep)
 		s2[i] = '-';
 		i++;
 		s = ft_itoa(ft_atoi(s) * -1);
+		size++;
 	}
 	while (size-- > 0)
 	{
@@ -97,7 +98,7 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 	}
 	else
 	{
-		while (str[res.i] >= '1' && str[res.i] <= '9')
+		while (str[res.i] >= '0' && str[res.i] <= '9')
 		{
 			flag.width = (flag.width * 10) + (str[res.i] - 48);
 			res.i++;
