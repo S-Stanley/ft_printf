@@ -58,10 +58,10 @@ char            *ft_add_right(char *s, int size_min, char sep)
 
 char		*ft_add_left(char *s, int size_min, char sep)
 {
-	int	size;
+	int		size;
 	char	*s2;
-	int	i;
-	int	x;
+	int		i;
+	int		x;
 
 	i = 0;
 	x = 0;

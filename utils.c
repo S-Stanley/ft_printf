@@ -175,13 +175,13 @@ char		*ft_strndup(char *str, int max)
 
 t_flag          init_flags()
 {
-        t_flag flag;
+	t_flag flag;
 
-        flag.width = 0;
-        flag.right = 0;
-        flag.sep = ' ';
+	flag.width = 0;
+	flag.right = 0;
+	flag.sep = ' ';
 	flag.precis = 0;
-        return (flag);
+	return (flag);
 }
 
 char		*ft_strdup(char *str)
