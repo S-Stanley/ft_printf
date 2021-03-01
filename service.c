@@ -14,7 +14,7 @@ t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag)
 		{
 			flag.precis = (flag.precis * 10) + (str[res.i] - 48);
 			res.i++;
-		}		
+		}
 	}
 	flag.i = res.i;
 	return (flag);
@@ -38,22 +38,22 @@ t_flag		ft_get_flag(t_flag flag, t_res res, char *str)
 
 char            *ft_add_right(char *s, int size_min, char sep)
 {
-        int     size;
-        char    *s2;
-        int     i;
+	int		size;
+	char	*s2;
+	int		i;
 
-        i = 0;
-        size = size_min - ft_strlen(s);
+	i = 0;
+	size = size_min - ft_strlen(s);
 	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
 	while (s[i])
-        {
-                s2[i] = s[i];
-                i++;
-        }
+	{
+		s2[i] = s[i];
+		i++;
+	}
 	while (size-- > 0)
 		s2[i++] = sep;
-        s2[i] = '\0';
-        return (s2);
+	s2[i] = '\0';
+	return (s2);
 }
 
 char		*ft_add_left(char *s, int size_min, char sep)
@@ -89,6 +89,56 @@ char		*ft_add_left(char *s, int size_min, char sep)
 	return (s2);
 }
 
+char		*ft_add_left_n(char *s, int size_min, char sep)
+{
+	int		size;
+	char	*s2;
+	int		i;
+	int		x;
+
+	i = 0;
+	x = 0;
+	size = size_min - ft_strlen(s);
+	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
+	if (size <= 0 && ft_strcmp(s, "0") == 0)
+	{
+		size = size_min;
+		while (s[x] && x < size)
+		{
+			s2[i] = s[x];
+			i++;
+			x++;
+		}
+	}
+	else
+	{
+		if (ft_atoi(s) < 0 && sep == '0')
+		{
+			s2[i] = '-';
+			i++;
+			// printf("|%s|", s);
+			if (ft_strcmp(s, "-2147483648") == 0)
+				s = ft_strdup("2147483648");
+			else
+				s = ft_itoa(ft_atoi(s) * -1);
+			size++;
+		}
+		while (size-- > 0)
+		{
+			s2[i] = sep;
+			i++;
+		}
+		while (s[x])
+		{
+			s2[i] = s[x];
+			i++;
+			x++;
+		}
+	}
+	s2[i] = '\0';
+	return (s2);
+}
+
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 {
 	if (str[res.i] == '*')
@@ -102,6 +152,7 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 		{
 			flag.width = (flag.width * 10) + (str[res.i] - 48);
 			res.i++;
+			flag.iswidth++;
 		}
 	}
 	flag.i = res.i;

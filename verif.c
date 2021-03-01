@@ -17,7 +17,7 @@ int	ft_is_with(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] >= '1' && str[i] <= '9')
+	if (str[i] >= '0' && str[i] <= '9')
 		return (1);
 	if (str[i] == '*')
 		return (1);
@@ -31,11 +31,12 @@ int	ft_is_prevision(char *str)
 	i = 0;
 	if (str[i] == '.')
 	{
-		i++;
-		if (str[i] >= '1' && str[i] <= '9')
-			return (1);
-		if (str[i] == '*')
-			return (1);
+		// i++;
+		// if (str[i] >= '0' && str[i] <= '9')
+		// 	return (1);
+		// if (str[i] == '*')
+		// 	return (1);
+		return (1);
 	}
 	return (0);
 }

@@ -1,5 +1,19 @@
 #include "ft_printf.h"
 
+int	ft_strcmp(char *s1, char *s2)
+{
+	int		i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
+}
+
 int	ft_count_hexa(int nb)
 {
 	int	i;
@@ -66,74 +80,78 @@ char	*ft_putinsigned_int(int nbr)
 	return (reverse_table(s));
 }
 
-char    *ft_itoa_hexa_min(int nb)
+char    *ft_itoa_hexa_min(int nbr)
 {
-        int     i;
-        char    *s;
-        int     minus;
-	int	c;
+	int				i;
+	char			*s;
+	int				minus;
+	int				c;
+	unsigned int	nb;
 
+	nb = (unsigned int)nbr;
 	if (nb == 0)
-                return (ft_strdup("0"));
-        i = 0;
-        minus = 0;
-        s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
-        if (!s)
-                return (NULL);
-        if (nb < 0)
-        {
-                nb = -nb;
-                minus = 1;
-        }
-        while (nb >= 1)
-        {
+		return (ft_strdup("0"));
+	i = 0;
+	minus = 0;
+	s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
+	if (!s)
+		return (NULL);
+	if (nb < 0)
+	{
+		nb = (unsigned int)-nb;
+		minus = 1;
+	}
+	while (nb >= 1)
+	{
 		c = (nb % 16) + 48;
 		if (c >= 58)
-			c = c + 7 + 32;
-                s[i] = c;
-                i++;
-                nb = nb / 16;
-        }
-        s[i] = '\0';
-        s = reverse_table(s);
-        if (minus)
-                s = ft_join("-", s);
-        return (s);
+		c = c + 7 + 32;
+		s[i] = c;
+		i++;
+		nb = nb / 16;
+	}
+	s[i] = '\0';
+	s = reverse_table(s);
+	if (minus)
+		s = ft_join("-", s);
+	return (s);
 }
 
-char    *ft_itoa_hexa_maj(int nb)
+char    *ft_itoa_hexa_maj(int nbr)
 {
-        int     i;
-        char    *s;
-        int     minus;
-        int     c;
+	int     		i;
+	char    		*s;
+	int     		minus;
+	int     		c;
+	unsigned int	nb;
 
+	nb = (unsigned int)nbr;
 	if (nb == 0)
-                return (ft_strdup("0"));
-        i = 0;
-        minus = 0;
-        s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
-        if (!s)
-                return (NULL);
-        if (nb < 0)
-        {
-                nb = -nb;
-                minus = 1;
-        }
-        while (nb >= 1)
-        {
-                c = (nb % 16) + 48;
-                if (c >= 58)
-                        c = c + 7;
-                s[i] = c;
-                i++;
-                nb = nb / 16;
-        }
-        s[i] = '\0';
-        s = reverse_table(s);
-        if (minus)
-                s = ft_join("-", s);
-        return (s);
+		return (ft_strdup("0"));
+	i = 0;
+	minus = 0;
+	s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
+	if (!s)
+		return (NULL);
+	if (nb < 0)
+	{
+		nb = -nb;
+		minus = 1;
+	}
+	while (nb >= 1)
+	{
+		c = (nb % 16) + 48;
+		if (c >= 58)
+			c = c + 7;
+		s[i] = c;
+		i++;
+		nb = nb / 16;
+	}
+	s[i] = '\0';
+	s = reverse_table(s);
+	if (minus)
+		s = ft_join("-", s);
+	return (s);
 }
 
 int		ft_atoi(char *str)
@@ -181,6 +199,8 @@ t_flag          init_flags()
 	flag.right = 0;
 	flag.sep = ' ';
 	flag.precis = 0;
+	flag.isprecision = 0;
+	flag.iswidth = 0;
 	return (flag);
 }
 
@@ -220,18 +240,18 @@ void		ft_putstr(char *str)
 
 char            *ft_joinchar(char *str, char c)
 {
-        int     i;
-        char    *s;
+		int     i;
+		char    *s;
 
-        i = -1;
-        s = malloc(sizeof(char) * (ft_strlen(str) + 2));
+		i = -1;
+		s = malloc(sizeof(char) * (ft_strlen(str) + 2));
 	if (!s)
 		return (NULL);
-        while (str[++i])
-                s[i] = str[i];
-        s[i] = c;
-        s[++i] = '\0';
-        return (s);
+		while (str[++i])
+				s[i] = str[i];
+		s[i] = c;
+		s[++i] = '\0';
+		return (s);
 }
 
 char	*get_value(char c, va_list data)
@@ -276,6 +296,10 @@ char	*ft_itoa(int nb)
 
 	if (nb == 0)
 		return (ft_strdup("0"));
+	if (nb == 2147483647)
+		return (ft_strdup("2147483647"));
+	if (nb == -2147483648)
+		return (ft_strdup("-2147483648"));
 	i = 0;
 	minus = 0;
 	s = malloc(sizeof(char) * (ft_intlen(nb) + 2));

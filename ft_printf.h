@@ -9,12 +9,14 @@ typedef struct s_res {
 }	t_res;
 
 typedef struct s_flag {
+	int		isprecision;
 	int		width;
 	int		i;
 	int		right;
 	char	sep;
 	int		precis;
 	char	letter;
+	int		iswidth;
 }	t_flag;
 
 int			ft_printf(const char *str, ...);
@@ -32,11 +34,12 @@ int			ft_intlen(int nb);
 t_flag		init_flags();
 char		*ft_strndup(char *str, int max);
 int			ft_atoi(char *str);
-char		*ft_itoa_hexa_min(int nb);
-char		*ft_itoa_hexa_maj(int nb);
+char		*ft_itoa_hexa_min(int nbr);
+char		*ft_itoa_hexa_maj(int nbr);
 char		*ft_putinsigned_int(int nbr);
 char		*str_that_address(int nb);
 int			ft_count_hexa(int nb);
+int			ft_strcmp(char *s1, char *s2);
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left(char *s, int size_min, char sep);
@@ -44,6 +47,7 @@ char		*ft_add_right(char *s, int size_min, char sep);
 t_flag		ft_get_flag(t_flag flag, t_res res, char *str);
 t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag);
 t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag);
+char		*ft_add_left_n(char *s, int size_min, char sep);
 
 int			ft_is_flag(char *str);
 int			ft_is_with(char *str);
