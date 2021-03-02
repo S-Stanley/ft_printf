@@ -23,7 +23,7 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		else
 		{
 			flag.sep = '0';
-			s = ft_add_left_n(s, flag.precis, flag.sep);
+			s = ft_add_left_n(s, flag.precis, flag.sep, flag.letter);
 			flag.sep = ' ';
 		}
 	}

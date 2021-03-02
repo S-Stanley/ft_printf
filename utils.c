@@ -75,6 +75,19 @@ char	*str_that_address(int nb)
 	return (str);
 }
 
+int		unsigned_len(unsigned int nb)
+{
+	int		i;
+
+	i = 0;
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	return (i);
+}
+
 char	*ft_putinsigned_int(int nbr)
 {
 	unsigned int	n;
@@ -82,7 +95,7 @@ char	*ft_putinsigned_int(int nbr)
 	int				i;
 
 	n = (unsigned int)nbr;
-	s = malloc(sizeof(char) * (ft_intlen(n) + 1));
+	s = malloc(sizeof(char) * (unsigned_len(n) + 1));
 	i = -1;
 	if (n == 0 || n == 1)
 		return (ft_strndup(ft_itoa(n), 2));
@@ -92,7 +105,8 @@ char	*ft_putinsigned_int(int nbr)
 		n = n / 10;
 	}
 	s[++i] = '\0';
-	return (reverse_table(s));
+	s = reverse_table(s);
+	return (s);
 }
 
 char    *ft_itoa_hexa_min(int nbr)
@@ -120,7 +134,7 @@ char    *ft_itoa_hexa_min(int nbr)
 	{
 		c = (nb % 16) + 48;
 		if (c >= 58)
-		c = c + 7 + 32;
+			c = c + 7 + 32;
 		s[i] = c;
 		i++;
 		nb = nb / 16;

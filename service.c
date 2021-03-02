@@ -116,7 +116,7 @@ char		*ft_add_left(char *s, int size_min, char sep)
 	return (s2);
 }
 
-char		*ft_add_left_n(char *s, int size_min, char sep)
+char		*ft_add_left_n(char *s, int size_min, char sep, char letter)
 {
 	int		size;
 	char	*s2;
@@ -139,7 +139,7 @@ char		*ft_add_left_n(char *s, int size_min, char sep)
 	}
 	else
 	{
-		if (ft_atoi(s) < 0 && sep == '0')
+		if (ft_atoi(s) < 0 && sep == '0' && letter != 'u')
 		{
 			s2[i] = '-';
 			i++;
