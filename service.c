@@ -72,7 +72,7 @@ char		*ft_add_left(char *s, int size_min, char sep)
 		s2[i] = '-';
 		i++;
 		s = ft_itoa(ft_atoi(s) * -1);
-		size++;
+		// size++;
 	}
 	while (size-- > 0)
 	{
