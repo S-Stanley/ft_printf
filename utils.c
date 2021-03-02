@@ -254,10 +254,20 @@ char            *ft_joinchar(char *str, char c)
 		return (s);
 }
 
+char	*get_string(va_list data)
+{
+	char	*s;
+
+	s = va_arg(data, char *);
+	if (!s)
+		return (ft_strdup("(null)"));
+	return (s);
+}
+
 char	*get_value(char c, va_list data)
 {
 	if (c == 's')
-		return (va_arg(data, char *));
+		return (get_string(data));
 	if (c == 'd' || c == 'i')
 		return (ft_itoa(va_arg(data, int)));
 	if (c == 'x')
