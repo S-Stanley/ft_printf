@@ -65,27 +65,54 @@ char		*ft_add_left(char *s, int size_min, char sep)
 
 	i = 0;
 	x = 0;
-	size = size_min - ft_strlen(s);
-	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
-	if (ft_atoi(s) < 0 && sep == '0')
+	if (size_min > 0)
 	{
-		s2[i] = '-';
-		i++;
-		s = ft_itoa(ft_atoi(s) * -1);
-		// size++;
+		size = size_min - ft_strlen(s);
+		s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
+		if (ft_atoi(s) < 0 && sep == '0')
+		{
+			s2[i] = '-';
+			i++;
+			s = ft_itoa(ft_atoi(s) * -1);
+		}
+		while (size-- > 0)
+		{
+			s2[i] = sep;
+			i++;
+		}
+		while (s[x])
+		{
+			s2[i] = s[x];
+			i++;
+			x++;
+		}
+		s2[i] = '\0';
 	}
-	while (size-- > 0)
+	else
 	{
-		s2[i] = sep;
-		i++;
+		if (size_min < 0)
+			size_min = -size_min;
+		size = size_min - ft_strlen(s);
+		s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
+		if (ft_atoi(s) < 0 && sep == '0')
+		{
+			s2[i] = '-';
+			i++;
+			s = ft_itoa(ft_atoi(s) * -1);
+		}
+		while (s[x])
+		{
+			s2[i] = s[x];
+			i++;
+			x++;
+		}
+		while (size-- > 0)
+		{
+			s2[i] = sep;
+			i++;
+		}
+		s2[i] = '\0';
 	}
-	while (s[x])
-	{
-		s2[i] = s[x];
-		i++;
-		x++;
-	}
-	s2[i] = '\0';
 	return (s2);
 }
 
@@ -140,6 +167,7 @@ char		*ft_add_left_n(char *s, int size_min, char sep)
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 {
+
 	if (str[res.i] == '*')
 	{
 		flag.width = va_arg(data, int);
