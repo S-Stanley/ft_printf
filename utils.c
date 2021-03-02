@@ -1,6 +1,19 @@
 #include "ft_printf.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int		check_ingredients(char c, char *str)
+{
+	int		i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == c)
+			return (1);
+	}
+	return (0);
+}
+
+int		ft_strcmp(char *s1, char *s2)
 {
 	int		i;
 
@@ -14,7 +27,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int	ft_count_hexa(int nb)
+int		ft_count_hexa(int nb)
 {
 	int	i;
 
@@ -36,9 +49,11 @@ char	*str_that_address(int nb)
 	int					i;
 
 	i = -1;
+	if (nb == 0)
+		return (ft_strdup("0x0"));
 	n = (unsigned long int)nb;
 	container = 16;
-	str = malloc(sizeof(char) * (ft_intlen(n) + 1));
+	str = malloc(sizeof(char) * (ft_intlen(n) + 3));
 	while (n / container >= 16)
 		container = container * 16;
 	str[++i] = '0';
@@ -56,7 +71,7 @@ char	*str_that_address(int nb)
 		n = n % container;
 		container = container / 16;
 	}
-	str[++i] = 0;
+	str[++i] = '\0';
 	return (str);
 }
 

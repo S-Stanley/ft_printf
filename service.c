@@ -116,7 +116,6 @@ char		*ft_add_left_n(char *s, int size_min, char sep)
 		{
 			s2[i] = '-';
 			i++;
-			// printf("|%s|", s);
 			if (ft_strcmp(s, "-2147483648") == 0)
 				s = ft_strdup("2147483648");
 			else
