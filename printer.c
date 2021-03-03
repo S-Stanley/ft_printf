@@ -20,6 +20,8 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	{
 		if (str[res.i] == 's' || str[res.i] == 'c')
 			s = ft_strndup(s, flag.precis);
+		else if (flag.letter == 'p' && flag.precis == 0)
+			s = ft_strdup("0x");
 		else
 		{
 			flag.sep = '0';
@@ -27,13 +29,6 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 			flag.sep = ' ';
 		}
 	}
-	// else if (!flag.precis && check_ingredients(flag.letter, "dipxXu"))
-	// {
-	// 	if (flag.isprecision && flag.letter == 'p')
-	// 		s = ft_strdup("0x");
-	// 	else if (flag.isprecision && flag.letter != 'p')
-	// 		s = ft_strdup("");
-	// }
 	if (flag.width)
 	{
 		if (ft_atoi(s) == 0 && flag.width == 0)
