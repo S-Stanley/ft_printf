@@ -16,7 +16,7 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		}
 	}
 	flag.letter = str[res.i];
-	if (flag.isprecision)
+	if (flag.isprecision && flag.letter != 'c')
 	{
 		if (str[res.i] == 's' || str[res.i] == 'c')
 			s = ft_strndup(s, flag.precis);
