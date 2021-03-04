@@ -3,7 +3,7 @@
 t_res		ft_proxy(char *str, t_res res, va_list data)
 {
 	t_flag	flag;
-	
+
 	res.i++;
 	flag = init_flags();
 	if (ft_is_flag(&str[res.i]))

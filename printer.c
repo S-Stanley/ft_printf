@@ -6,10 +6,10 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
-    s = get_value(str[res.i], data);
+	s = get_value(str[res.i], data);
 	if (ft_atoi(s) == 0 && flag.precis == 0 && flag.width == 0)
 	{
-		if (str[res.i-1] == '.' || str[res.i-2] == '.')
+		if (str[res.i - 1] == '.' || str[res.i - 2] == '.')
 		{
 			res.i++;
 			return (res);
@@ -42,4 +42,3 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	res.i++;
 	return (res);
 }
-

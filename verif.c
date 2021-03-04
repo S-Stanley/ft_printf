@@ -30,22 +30,16 @@ int	ft_is_prevision(char *str)
 
 	i = 0;
 	if (str[i] == '.')
-	{
-		// i++;
-		// if (str[i] >= '0' && str[i] <= '9')
-		// 	return (1);
-		// if (str[i] == '*')
-		// 	return (1);
 		return (1);
-	}
 	return (0);
 }
 
 int	ft_isletter(char *str)
 {
 	int	i;
-	char	*flags = "cspdiuxX%";
+	char	*flags;
 
+	flags = ft_strdup("cspdiuxX%");
 	i = 0;
 	while (flags[i])
 	{
