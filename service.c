@@ -167,6 +167,8 @@ char		*ft_add_left_n(char *s, int size_min, char sep, char letter)
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 {
+	int		nb;
+
 	if (str[res.i] == '-')
 		res.i++;
 	if (str[res.i] == '-')
@@ -175,7 +177,13 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 		res.i++;
 	if (str[res.i] == '*')
 	{
-		flag.width = va_arg(data, int);
+		nb = va_arg(data, int);
+		if (nb < 0)
+		{
+			nb = -nb;
+			flag.right = 1;
+		}
+		flag.width = nb;
 		res.i++;
 	}
 	else
