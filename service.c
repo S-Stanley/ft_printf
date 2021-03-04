@@ -126,10 +126,10 @@ char		*ft_add_left_n(char *s, int size_min, char sep, char letter)
 	i = 0;
 	x = 0;
 	size = size_min - ft_strlen(s);
-	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
 	if (size <= 0 && ft_strcmp(s, "0") == 0)
 	{
 		size = size_min;
+		s2 = malloc(sizeof(char) * (ft_strlen(s) + size + 1));
 		while (s[x] && x < size)
 		{
 			s2[i] = s[x];
@@ -139,6 +139,9 @@ char		*ft_add_left_n(char *s, int size_min, char sep, char letter)
 	}
 	else
 	{
+		if (size < 0)
+			return (s);
+		s2 = malloc(sizeof(char) * (ft_strlen(s) + size + 1));
 		if (ft_atoi(s) < 0 && sep == '0' && letter != 'u')
 		{
 			s2[i] = '-';
