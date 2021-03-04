@@ -18,13 +18,14 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	flag.letter = str[res.i];
 	if (flag.isprecision && flag.letter != 'c')
 	{
-		if (str[res.i] == 's' || str[res.i] == 'c')
+		if (str[res.i] == 's' || str[res.i] == 'c' || str[res.i] == '%')
 			s = ft_strndup(s, flag.precis);
 		else if (flag.letter == 'p' && flag.precis == 0)
 			s = ft_strdup("0x");
 		else
 		{
-			flag.sep = '0';
+			if (flag.letter != '%')
+				flag.sep = '0';
 			s = ft_add_left_n(s, flag.precis, flag.sep, flag.letter);
 			flag.sep = ' ';
 		}

@@ -109,7 +109,7 @@ char	*ft_putinsigned_int(int nbr)
 	return (s);
 }
 
-char    *ft_itoa_hexa_min(int nbr)
+char	*ft_itoa_hexa_min(int nbr)
 {
 	int				i;
 	char			*s;
@@ -146,12 +146,12 @@ char    *ft_itoa_hexa_min(int nbr)
 	return (s);
 }
 
-char    *ft_itoa_hexa_maj(int nbr)
+char	*ft_itoa_hexa_maj(int nbr)
 {
-	int     		i;
-	char    		*s;
-	int     		minus;
-	int     		c;
+	int				i;
+	char			*s;
+	int				minus;
+	int				c;
 	unsigned int	nb;
 
 	nb = (unsigned int)nbr;
@@ -220,9 +220,9 @@ char		*ft_strndup(char *str, int max)
 	return (s);
 }
 
-t_flag          init_flags()
+t_flag		init_flags()
 {
-	t_flag flag;
+	t_flag	flag;
 
 	flag.width = 0;
 	flag.right = 0;
@@ -267,20 +267,20 @@ void		ft_putstr(char *str)
 		write(1, &str[i], 1);
 }
 
-char            *ft_joinchar(char *str, char c)
+char		*ft_joinchar(char *str, char c)
 {
-		int     i;
-		char    *s;
+	int		i;
+	char	*s;
 
-		i = -1;
-		s = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	i = -1;
+	s = malloc(sizeof(char) * (ft_strlen(str) + 2));
 	if (!s)
 		return (NULL);
-		while (str[++i])
-				s[i] = str[i];
-		s[i] = c;
-		s[++i] = '\0';
-		return (s);
+	while (str[++i])
+			s[i] = str[i];
+	s[i] = c;
+	s[++i] = '\0';
+	return (s);
 }
 
 char	*get_string(va_list data)
@@ -314,7 +314,7 @@ char	*get_value(char c, va_list data)
 	return (ft_strdup(""));
 }
 
-int	ft_intlen(int nb)
+int		ft_intlen(int nb)
 {
 	int	i;
 
