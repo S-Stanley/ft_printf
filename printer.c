@@ -16,6 +16,8 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		}
 	}
 	flag.letter = str[res.i];
+	if (flag.letter == 'p' && flag.precis != 0)
+		flag.precis = flag.precis + 2;
 	if (flag.isprecision && flag.letter != 'c')
 	{
 		if (str[res.i] == 's' || str[res.i] == 'c' || str[res.i] == '%')
@@ -39,6 +41,8 @@ t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		else
 			s = ft_add_left(s, flag.width, flag.sep);
 	}
+	if (flag.letter == 'p' && ft_find(s, "0x"))
+		s = put_it_first(s, "0x");
 	res.str = ft_join(res.str, s);
 	res.i++;
 	return (res);
