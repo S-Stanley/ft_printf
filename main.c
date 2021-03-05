@@ -2,6 +2,6 @@
 
 int main(void)
 {
-	printf("|%d", ft_printf("%.0i", 0));
+	printf("|%d", ft_printf("hello, world!"));
 	return (0);
 }

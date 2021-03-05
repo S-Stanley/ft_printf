@@ -50,7 +50,7 @@ int		ft_printf(const char *str, ...)
 		}
 		else
 		{
-			res.str = ft_joinchar(res.str, str[res.i], flag, 0).str;
+			res.str = ft_joinchar2(res.str, str[res.i]);
 			res.i++;
 		}
 	}

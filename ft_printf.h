@@ -65,6 +65,7 @@ char		*get_string(va_list data);
 int			check_ingredients(char c, char *str);
 int			ft_find(char *str, char *to_find);
 char		*put_it_first(char *str, char *to_move);
+char		*ft_joinchar2(char *str, char c);
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left(char *s, int size_min, char sep);

@@ -263,7 +263,7 @@ int		ft_putstr(char *str, t_flag flag)
 {
 	int	i;
 
-	if (flag.len != 0)
+	if (flag.len != 0 && flag.letter == 'c')
 	{
 		i = -1;
 		while (++i < flag.len)
@@ -274,6 +274,22 @@ int		ft_putstr(char *str, t_flag flag)
 	while (str[++i])
 		write(1, &str[i], 1);
 	return (ft_strlen(str));	
+}
+
+char	*ft_joinchar2(char *str, char c)
+{
+	int		i;
+	char	*s;
+
+	i = -1;
+	s = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	if (!s)
+		return (NULL);
+	while (str[++i])
+			s[i] = str[i];
+	s[i] = c;
+	s[++i] = '\0';
+	return (s);
 }
 
 t_jchar	ft_joinchar(char *str, char c, t_flag flag, int si)
