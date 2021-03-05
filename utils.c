@@ -214,6 +214,8 @@ char		*ft_strndup(char *str, int max)
 	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	if (!s)
 		return (NULL);
+	if (max < 0)
+		max = ft_strlen(str);
 	while (str[++i] && i < max)
 		s[i] = str[i];
 	s[i] = '\0';
