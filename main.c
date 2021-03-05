@@ -2,6 +2,6 @@
 
 int main(void)
 {
-	printf("|%d", ft_printf("%.*s", -3, "hello"));
+	printf("|%d", ft_printf("%0*i", -7, -54));
 	return (0);
 }

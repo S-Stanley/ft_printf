@@ -185,6 +185,7 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 		{
 			nb = -nb;
 			flag.right = 1;
+			flag.sep = ' ';
 		}
 		flag.width = nb;
 		res.i++;
