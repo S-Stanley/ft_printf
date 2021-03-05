@@ -17,16 +17,37 @@ typedef struct s_flag {
 	int		precis;
 	char	letter;
 	int		iswidth;
+	int		len;
 }	t_flag;
 
-int			ft_printf(const char *str, ...);
-t_res		ft_proxy(char *str, t_res res, va_list data);
+typedef struct s_proxy {
+	t_res 	res;
+	t_flag	flag;
+} t_proxy;
 
-char		*ft_joinchar(char *str, char c);
+typedef struct s_jchar {
+	char	*str;
+	int		len;
+} t_jchar;
+
+typedef struct s_gvalue {
+	char	*str;
+	t_flag	flag;
+}	t_gvalue;
+
+typedef struct s_printer {
+	t_res	res;
+	t_flag	flag;
+}	t_printer;
+
+int			ft_printf(const char *str, ...);
+t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag);
+
+t_jchar		ft_joinchar(char *str, char c, t_flag flag, int si);
 int			ft_strlen(char *str);
-void		ft_putstr(char *str);
+int 		ft_putstr(char *str, t_flag flag);
 char		*ft_strdup(char *str);
-char		*get_value(char c, va_list data);
+t_gvalue	get_value(char c, va_list data, t_flag flag);
 char		*ft_join(char *s1, char *s2);
 char		*ft_itoa(int nb);
 char		*reverse_table(char *str);
@@ -49,7 +70,7 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left(char *s, int size_min, char sep);
 char		*ft_add_right(char *s, int size_min, char sep);
 t_flag		ft_get_flag(t_flag flag, t_res res, char *str);
-t_res		ft_printer(char *str, t_res res, va_list data, t_flag flag);
+t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag);
 t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left_n(char *s, int size_min, char sep, char letter);
 // char		*update_with_precis(char *str, t_res res, t_flag flag, char *s);

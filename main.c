@@ -2,6 +2,6 @@
 
 int main(void)
 {
-	printf("|%d", printf("%5p", NULL));
+	printf("|%d", ft_printf("%.0i", 0));
 	return (0);
 }

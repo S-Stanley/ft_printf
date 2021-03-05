@@ -1,5 +1,11 @@
 {
 	"files.associations": {
-		"sstream": "c"
+		"sstream": "c",
+		"algorithm": "c",
+		"*.tcc": "c",
+		"fstream": "c",
+		"memory": "c",
+		"new": "c",
+		"numeric": "c"
 	}
 }

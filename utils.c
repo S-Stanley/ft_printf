@@ -230,6 +230,7 @@ t_flag		init_flags()
 	flag.precis = 0;
 	flag.isprecision = 0;
 	flag.iswidth = 0;
+	flag.len = 0;
 	return (flag);
 }
 
@@ -258,29 +259,45 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-void		ft_putstr(char *str)
+int		ft_putstr(char *str, t_flag flag)
 {
 	int	i;
 
+	if (flag.len != 0)
+	{
+		i = -1;
+		while (++i < flag.len)
+			write(1, &str[i], 1);
+		return (i);
+	}
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
+	return (ft_strlen(str));	
 }
 
-char		*ft_joinchar(char *str, char c)
+t_jchar	ft_joinchar(char *str, char c, t_flag flag, int si)
 {
 	int		i;
 	char	*s;
+	t_jchar	render;
 
 	i = -1;
+	render.len = 0;
 	s = malloc(sizeof(char) * (ft_strlen(str) + 2));
 	if (!s)
-		return (NULL);
+	{
+		render.str = NULL;
+		return (render);
+	}
 	while (str[++i])
 			s[i] = str[i];
+	if (!c && si == 1)
+		render.len = 1;
 	s[i] = c;
 	s[++i] = '\0';
-	return (s);
+	render.str = s;
+	return (render);
 }
 
 char	*get_string(va_list data)
@@ -293,25 +310,34 @@ char	*get_string(va_list data)
 	return (s);
 }
 
-char	*get_value(char c, va_list data)
+t_gvalue	get_value(char c, va_list data, t_flag flag)
 {
+	t_jchar		joinc;
+	t_gvalue	render;
+	
+	render.flag = flag;
 	if (c == 's')
-		return (get_string(data));
-	if (c == 'd' || c == 'i')
-		return (ft_itoa(va_arg(data, int)));
-	if (c == 'x')
-		return (ft_itoa_hexa_min(va_arg(data, int)));
-	if (c == 'X')
-		return (ft_itoa_hexa_maj(va_arg(data, int)));
-	if (c == 'p')
-		return (str_that_address(va_arg(data, int)));
-	if (c == 'u')
-		return (ft_putinsigned_int(va_arg(data, int)));
-	if (c == 'c')
-		return (ft_joinchar("", (char)va_arg(data, int)));
-	if (c == '%')
-		return (ft_strdup("%"));
-	return (ft_strdup(""));
+		render.str = get_string(data);
+	else if (c == 'd' || c == 'i')
+		render.str = ft_itoa(va_arg(data, int));
+	else if (c == 'x')
+		render.str = ft_itoa_hexa_min(va_arg(data, int));
+	else if (c == 'X')
+		render.str = ft_itoa_hexa_maj(va_arg(data, int));
+	else if (c == 'p')
+		render.str = str_that_address(va_arg(data, int));
+	else if (c == 'u')
+		render.str = ft_putinsigned_int(va_arg(data, int));
+	else if (c == 'c')
+	{		joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
+		render.flag.len = joinc.len;
+		render.str = joinc.str;
+	}
+	else if (c == '%')
+		render.str = ft_strdup("%");
+	else
+		render.str = ft_strdup("");
+	return (render);
 }
 
 int		ft_intlen(int nb)
