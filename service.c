@@ -74,7 +74,10 @@ char		*ft_add_left(char *s, int size_min, char sep)
 		{
 			s2[i] = '-';
 			i++;
-			s = ft_itoa(ft_atoi(s) * -1);
+			if (ft_atoi(s) == -2147483648)
+				s = "2147483648";
+			else
+				s = ft_itoa(ft_atoi(s) * -1);
 		}
 		while (size-- > 0)
 		{

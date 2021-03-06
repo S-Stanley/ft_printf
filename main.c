@@ -2,6 +2,11 @@
 
 int main(void)
 {
-	printf("|%d", ft_printf("%.*d", -1, 0));
+	// int		a = -4;
+	int		a = 2;
+	int		e = -2147483648;
+
+	printf("|%d", ft_printf("%0*d\n", a, e));
+	// printf("|%d", ft_printf("%0*d", ));
 	return (0);
 }
