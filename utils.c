@@ -100,13 +100,11 @@ int		unsigned_len(unsigned int nb)
 	return (i);
 }
 
-char	*ft_putinsigned_int(int nbr)
+char	*ft_putinsigned_int(unsigned int n)
 {
-	unsigned int	n;
 	char			*s;
 	int				i;
 
-	n = (unsigned int)nbr;
 	s = malloc(sizeof(char) * (unsigned_len(n) + 1));
 	i = -1;
 	if (n == 0 || n == 1)
@@ -195,9 +193,9 @@ char	*ft_itoa_hexa_maj(int nbr)
 	return (s);
 }
 
-int		ft_atoi(char *str)
+long long	ft_atoi(char *str)
 {
-	int	nb;
+	long long int	nb;
 	int	i;
 	int	minus;
 
@@ -375,13 +373,9 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'X')
 		render.str = ft_itoa_hexa_maj(va_arg(data, int));
 	else if (c == 'p')
-	{
-		// void *p = va_arg(data, void *);
 		render.str = str_that_address(va_arg(data, unsigned long long));
-
-	}
 	else if (c == 'u')
-		render.str = ft_putinsigned_int(va_arg(data, int));
+		render.str = ft_putinsigned_int(va_arg(data, unsigned int));
 	else if (c == 'c')
 	{		joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
 		render.flag.len = joinc.len;
