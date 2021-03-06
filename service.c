@@ -130,6 +130,8 @@ char		*ft_add_left_n(char *s, int size_min, char sep, char letter)
 	if (size <= 0 && ft_strcmp(s, "0") == 0)
 	{
 		size = size_min;
+		if (size < 0 && letter == 'd')
+			return (s);
 		s2 = malloc(sizeof(char) * (ft_strlen(s) + size + 1));
 		while (s[x] && x < size)
 		{
