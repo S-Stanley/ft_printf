@@ -57,5 +57,5 @@ int		ft_printf(const char *str, ...)
 		}
 	}
 	va_end(data);
-	return (ft_putstr(res.str, render.flag));
+	return (ft_putstr(res.str, flag));
 }
