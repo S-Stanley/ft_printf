@@ -1,5 +1,16 @@
 #include "ft_printf.h"
 
+int		ft_isnum(char c)
+{
+	if (c == 'd' || c == 'i')
+		return (1);
+	// if (c == 'x' || c == 'X')
+	// 	return (1);
+	// if (c == 'u')
+	// 	return (1);
+	return (0);
+}
+
 int		check_ingredients(char c, char *str)
 {
 	int		i;
