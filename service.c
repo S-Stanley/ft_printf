@@ -31,6 +31,7 @@ t_flag		ft_get_flag(t_flag flag, t_res res, char *str)
 	{
 		flag.right = 1;
 		res.i++;
+		flag.neg = 1;
 	}
 	flag.i = res.i;
 	return (flag);

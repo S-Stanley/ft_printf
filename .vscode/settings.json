@@ -6,6 +6,7 @@
 		"fstream": "c",
 		"memory": "c",
 		"new": "c",
-		"numeric": "c"
+		"numeric": "c",
+		"ft_printf.h": "c"
 	}
 }

@@ -272,23 +272,23 @@ int		ft_putstr(char *str, t_flag flag)
 		i = 0;
 		if (flag.neg)
 		{
+			write(1, &str[ft_strlen(str)], 1);
+			i++;
 			while (--flag.width > 0)
 			{
 				i++;
 				write(1, " ", 1);
 			}
-			i++;
-			write(1, &str[ft_strlen(str)], 1);
 		}
 		else
 		{
-			write(1, &str[ft_strlen(str)], 1);
-			i++;
 			while (--flag.width > 0)
 			{
 				i++;
 				write(1, " ", 1);
 			}
+			i++;
+			write(1, &str[ft_strlen(str)], 1);
 		}
 		return (i);
 	}
