@@ -60,7 +60,7 @@ long long	ft_atoi(char *str);
 char		*ft_itoa_hexa_min(int nbr);
 char		*ft_itoa_hexa_maj(int nbr);
 char		*ft_putinsigned_int(unsigned int n);
-char		*str_that_address(unsigned long long nb);
+char		*str_that_address(unsigned long long n);
 int			ft_count_hexa(int nb);
 int			ft_strcmp(char *s1, char *s2);
 char		*get_string(va_list data);

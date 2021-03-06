@@ -10,6 +10,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
 	s = gvalue.str;
+	// printf("*%s*", s);
 	flag = gvalue.flag;
 	if (ft_atoi(s) == 0 && flag.precis == 0 && flag.width == 0)
 	{

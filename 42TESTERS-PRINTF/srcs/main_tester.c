@@ -158,8 +158,8 @@ int main()
 	a = 8;
 	while (a < 12) //
 	{
-		PRINT(" --- Return 0: %d\n", PRINT("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
-		PRINT(" --- Return 0: %d\n", PRINT("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
+		PRINT(" --- Return 0-0 %d %d: %d\n", a, b, PRINT("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
+		PRINT(" --- Return 0-1 %d %d: %d\n", a, b, PRINT("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
 		a++;
 	}
 	a = f;

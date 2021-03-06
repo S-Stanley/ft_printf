@@ -51,19 +51,18 @@ int		ft_count_hexa(int nb)
 	return (i);
 }
 
-char	*str_that_address(unsigned long long nb)
+char	*str_that_address(unsigned long long n)
 {
 	long int			container;
 	char				tmp;
-	unsigned long long	n;
 	char				*str;
 	int					i;
 
-
 	i = -1;
-	if (nb == 0)
+	if (n == 0)
 		return (ft_strdup("0x0"));
-	n = (unsigned long long)nb;
+	if (n == 1)
+		return (ft_strdup("0x1"));
 	container = 16;
 	str = malloc(sizeof(char) * (ft_intlen(n) + 3));
 	while (n / container >= 16)
