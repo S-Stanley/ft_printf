@@ -40,11 +40,11 @@ int		ft_count_hexa(int nb)
 	return (i);
 }
 
-char	*str_that_address(int nb)
+char	*str_that_address(unsigned long long nb)
 {
 	long int			container;
 	char				tmp;
-	unsigned long int	n;
+	unsigned long long	n;
 	char				*str;
 	int					i;
 
@@ -52,7 +52,7 @@ char	*str_that_address(int nb)
 	i = -1;
 	if (nb == 0)
 		return (ft_strdup("0x0"));
-	n = (unsigned long int)nb;
+	n = (unsigned long long)nb;
 	container = 16;
 	str = malloc(sizeof(char) * (ft_intlen(n) + 3));
 	while (n / container >= 16)
@@ -365,7 +365,7 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'p')
 	{
 		// void *p = va_arg(data, void *);
-		render.str = str_that_address(va_arg(data, int));
+		render.str = str_that_address(va_arg(data, unsigned long long));
 
 	}
 	else if (c == 'u')
