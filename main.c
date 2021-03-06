@@ -24,10 +24,9 @@
 
 int main(void)
 {
-	a = 8;
-	b = 5;
-	// printf("%d\n", printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
-	printf("|%d\n", ft_printf("%*p", a, (void *)209590960));
-	// printf("%d\n", ft_printf("%*.*i\n", a, b, i));
+	a = 12;
+	b = 18;
+	printf("%d\n", printf("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, i, a, i, a, i, a, i, a, i));
+	// printf("|%d\n", ft_printf("%-----.*d", a, i));
 	return (0);
 }
