@@ -1,7 +1,5 @@
 #include "ft_printf.h"
 
-
-
 t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 {
 	char 		*s;

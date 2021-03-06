@@ -48,6 +48,7 @@ char	*str_that_address(int nb)
 	char				*str;
 	int					i;
 
+
 	i = -1;
 	if (nb == 0)
 		return (ft_strdup("0x0"));
@@ -233,6 +234,7 @@ t_flag		init_flags()
 	flag.isprecision = 0;
 	flag.iswidth = 0;
 	flag.len = 0;
+	flag.neg = 0;
 	return (flag);
 }
 
@@ -267,9 +269,27 @@ int		ft_putstr(char *str, t_flag flag)
 
 	if (flag.len != 0 && flag.letter == 'c')
 	{
-		i = -1;
-		while (++i < flag.len)
-			write(1, &str[i], 1);
+		i = 0;
+		if (flag.neg)
+		{
+			while (--flag.width > 0)
+			{
+				i++;
+				write(1, " ", 1);
+			}
+			i++;
+			write(1, &str[ft_strlen(str)], 1);
+		}
+		else
+		{
+			write(1, &str[ft_strlen(str)], 1);
+			i++;
+			while (--flag.width > 0)
+			{
+				i++;
+				write(1, " ", 1);
+			}
+		}
 		return (i);
 	}
 	i = -1;
@@ -343,7 +363,11 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'X')
 		render.str = ft_itoa_hexa_maj(va_arg(data, int));
 	else if (c == 'p')
+	{
+		// void *p = va_arg(data, void *);
 		render.str = str_that_address(va_arg(data, int));
+
+	}
 	else if (c == 'u')
 		render.str = ft_putinsigned_int(va_arg(data, int));
 	else if (c == 'c')

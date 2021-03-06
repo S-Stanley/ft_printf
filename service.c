@@ -172,12 +172,11 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 {
 	int		nb;
 
-	if (str[res.i] == '-')
+	while (str[res.i] == '-')
+	{
 		res.i++;
-	if (str[res.i] == '-')
-		res.i++;
-	if (str[res.i] == '-')
-		res.i++;
+		flag.neg = 1;
+	}
 	if (str[res.i] == '*')
 	{
 		nb = va_arg(data, int);

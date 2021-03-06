@@ -18,6 +18,7 @@ typedef struct s_flag {
 	char	letter;
 	int		iswidth;
 	int		len;
+	int 	neg;
 }	t_flag;
 
 typedef struct s_proxy {
