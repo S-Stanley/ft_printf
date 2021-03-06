@@ -35,7 +35,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 			if (flag.letter != '%')
 				flag.sep = '0';
 			s = ft_add_left_n(s, flag.precis, flag.sep, flag.letter);
-			if (ft_isnum(flag.letter) && flag.precis < 0 && flag.right == 0)
+			if (ft_isnum(flag.letter) && flag.precis < 0 && flag.right == 0 && flag.flag == '0')
 				flag.sep = '0';
 			else
 				flag.sep = ' ';

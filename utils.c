@@ -246,6 +246,7 @@ t_flag		init_flags()
 	flag.iswidth = 0;
 	flag.len = 0;
 	flag.neg = 0;
+	flag.flag = 0;
 	return (flag);
 }
 

@@ -24,10 +24,12 @@
 
 int main(void)
 {
-	a = -2;
+	a = 2;
 	b = -2;
-	// printf("%d\n", printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d\n", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
-	printf("%d\n", ft_printf("%0*.*i\n", a, b, i));
+	// printf("%d\n", ft_printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+
+	printf("%d\n", ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+	// printf("%d\n", ft_printf("%*.*i\n", a, b, i));
 	// printf("|%d", ft_printf("%0*d", ));
 	return (0);
 }

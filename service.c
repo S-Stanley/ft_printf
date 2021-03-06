@@ -26,6 +26,7 @@ t_flag		ft_get_flag(t_flag flag, t_res res, char *str)
 	{
 		flag.sep = '0';
 		res.i++;
+		flag.flag = '0';
 	}
 	if (str[res.i] == '-')
 	{
