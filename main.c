@@ -24,9 +24,9 @@
 
 int main(void)
 {
-	a = 12;
-	b = 18;
-	printf("%d\n", printf("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, i, a, i, a, i, a, i, a, i));
-	// printf("|%d\n", ft_printf("%-----.*d", a, i));
+	// a = 12;
+	// b = 18;
+	// printf("%d\n", ft_printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0));
+	printf("|%d\n", ft_printf(""));
 	return (0);
 }

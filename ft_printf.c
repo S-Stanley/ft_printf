@@ -40,13 +40,15 @@ int		ft_printf(const char *str, ...)
 	res.i = 0;
 	res.str = ft_strdup("");
 	va_start(data, str);
+	flag = init_flags();
 	while (str[res.i])
 	{
 		if (str[res.i] == '%')
 		{
-			flag = init_flags();
+			flag = re_init_flags(flag);
 			render = ft_proxy((char *)str, res, data, flag);
 			res = render.res;
+			flag = render.flag;
 		}
 		else
 		{

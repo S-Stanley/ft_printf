@@ -244,6 +244,24 @@ t_flag		init_flags()
 	flag.len = 0;
 	flag.neg = 0;
 	flag.flag = 0;
+	flag.count = 0;
+	return (flag);
+}
+
+t_flag		re_init_flags(t_flag ex)
+{
+	t_flag	flag;
+
+	flag.width = 0;
+	flag.right = 0;
+	flag.sep = ' ';
+	flag.precis = 0;
+	flag.isprecision = 0;
+	flag.iswidth = 0;
+	flag.len = 0;
+	flag.neg = 0;
+	flag.flag = 0;
+	flag.count = ex.count;
 	return (flag);
 }
 
@@ -276,35 +294,10 @@ int		ft_putstr(char *str, t_flag flag)
 {
 	int	i;
 
-	if (flag.len != 0 && flag.letter == 'c')
-	{
-		i = 0;
-		if (flag.neg)
-		{
-			write(1, &str[ft_strlen(str)], 1);
-			i++;
-			while (--flag.width > 0)
-			{
-				i++;
-				write(1, " ", 1);
-			}
-		}
-		else
-		{
-			while (--flag.width > 0)
-			{
-				i++;
-				write(1, " ", 1);
-			}
-			i++;
-			write(1, &str[ft_strlen(str)], 1);
-		}
-		return (i);
-	}
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
-	return (ft_strlen(str));	
+	return (ft_strlen(str) + flag.count);	
 }
 
 char	*ft_joinchar2(char *str, char c)
@@ -376,8 +369,9 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'u')
 		render.str = ft_putinsigned_int(va_arg(data, unsigned int));
 	else if (c == 'c')
-	{		joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
-		render.flag.len = joinc.len;
+	{	
+		joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
+		render.flag.len = joinc.len + render.flag.len;
 		render.str = joinc.str;
 	}
 	else if (c == '%')

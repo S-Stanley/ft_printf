@@ -20,6 +20,7 @@ typedef struct s_flag {
 	int		len;
 	int 	neg;
 	char	flag;
+	int		count;
 }	t_flag;
 
 typedef struct s_proxy {
@@ -55,6 +56,7 @@ char		*ft_itoa(int nb);
 char		*reverse_table(char *str);
 int			ft_intlen(int nb);
 t_flag		init_flags();
+t_flag		re_init_flags(t_flag ex);
 char		*ft_strndup(char *str, int max);
 long long	ft_atoi(char *str);
 char		*ft_itoa_hexa_min(int nbr);
