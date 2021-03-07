@@ -51,8 +51,8 @@ char	*ft_itoa(int nb)
 char	*reverse_table(char *str)
 {
 	char	*s;
-	int	i;
-	int	x;
+	int		i;
+	int		x;
 
 	i = 0;
 	x = ft_strlen(str) - 1;
@@ -71,8 +71,8 @@ char	*reverse_table(char *str)
 
 char	*ft_join(char *s1, char *s2)
 {
-	int	i;
-	int	x;
+	int		i;
+	int		x;
 	char	*s;
 
 	i = 0;

@@ -78,7 +78,7 @@ char		*ft_strdup(char *str)
 	return (s);
 }
 
-int		ft_strlen(char *str)
+int			ft_strlen(char *str)
 {
 	int	i;
 

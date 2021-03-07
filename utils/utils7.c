@@ -22,7 +22,7 @@ t_gvalue	get_c_value(va_list data, t_flag flag, t_gvalue render)
 	return (render);
 }
 
-char	*give_s_itoa(int nb)
+char		*give_s_itoa(int nb)
 {
 	char	*s;
 	int		i;
@@ -40,7 +40,7 @@ char	*give_s_itoa(int nb)
 	return (s);
 }
 
-char	*get_malloc(int size)
+char		*get_malloc(int size)
 {
 	char	*s;
 

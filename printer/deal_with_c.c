@@ -31,7 +31,6 @@ t_flag_i	c_with_neg_or_pos(t_flag flag, char *str, int i)
 	return (flag_i);
 }
 
-
 t_flag_i	c_with_neg(t_flag flag, char *str, int i)
 {
 	t_flag_i	flag_i;
@@ -46,7 +45,7 @@ t_flag_i	c_with_neg(t_flag flag, char *str, int i)
 		write(1, " ", 1);
 	}
 	flag_i.flag = flag;
-	flag_i.i	= i;
+	flag_i.i = i;
 	return (flag_i);
 }
 

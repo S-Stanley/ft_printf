@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int		ft_putstr(char *str, t_flag flag)
+int			ft_putstr(char *str, t_flag flag)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int		ft_putstr(char *str, t_flag flag)
 	return (ft_strlen(str) + flag.count);
 }
 
-char	*ft_joinchar2(char *str, char c)
+char		*ft_joinchar2(char *str, char c)
 {
 	int		i;
 	char	*s;
@@ -38,7 +38,7 @@ char	*ft_joinchar2(char *str, char c)
 	return (s);
 }
 
-t_jchar	ft_joinchar(char *str, char c, t_flag flag, int si)
+t_jchar		ft_joinchar(char *str, char c, t_flag flag, int si)
 {
 	int		i;
 	char	*s;
@@ -62,7 +62,7 @@ t_jchar	ft_joinchar(char *str, char c, t_flag flag, int si)
 	return (render);
 }
 
-char	*get_string(va_list data)
+char		*get_string(va_list data)
 {
 	char	*s;
 

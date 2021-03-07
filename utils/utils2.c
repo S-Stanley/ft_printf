@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int		unsigned_len(unsigned int nb)
+int			unsigned_len(unsigned int nb)
 {
 	int		i;
 
@@ -25,7 +25,7 @@ int		unsigned_len(unsigned int nb)
 	return (i);
 }
 
-char	*ft_putinsigned_int(unsigned int n)
+char		*ft_putinsigned_int(unsigned int n)
 {
 	char			*s;
 	int				i;
@@ -44,7 +44,7 @@ char	*ft_putinsigned_int(unsigned int n)
 	return (s);
 }
 
-char	*ft_itoa_hexa_min(int nbr)
+char		*ft_itoa_hexa_min(int nbr)
 {
 	char			*s;
 	int				minus;
@@ -66,7 +66,7 @@ char	*ft_itoa_hexa_min(int nbr)
 	return (s);
 }
 
-char	*ft_itoa_hexa_maj(int nbr)
+char		*ft_itoa_hexa_maj(int nbr)
 {
 	char			*s;
 	int				minus;
