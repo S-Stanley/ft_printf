@@ -6,6 +6,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	t_gvalue	gvalue;
 	t_printer	printer;
 	int			i;
+	t_proxy		proxy;
 
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
@@ -55,39 +56,9 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		s = put_it_first(s, "0x");
 	if (flag.len != 0 && flag.letter == 'c')
 	{
-		i = 0;
-		if (flag.neg)
-		{
-			write(1, &str[ft_strlen(str)], 1);
-			i++;
-			flag.count++;
-			while (--flag.width > 0)
-			{
-				flag.count++;
-				i++;
-				write(1, " ", 1);
-			}
-		}
-		else
-		{
-			while (--flag.width > 0)
-			{
-				flag.count++;
-				i++;
-				write(1, " ", 1);
-			}
-			i++;
-			flag.count++;
-			write(1, &str[ft_strlen(str)], 1);
-		}
-		res.i++;
-		while (str[res.i] != '%' && (res.i + 1 < ft_strlen((char *)str)))
-		{
-			write(1, &str[res.i], 1);
-			res.i++;
-			flag.count++;
-		}
-		res.str = ft_join(res.str, "");
+		proxy = deal_with_c(flag, res, str);
+		flag = proxy.flag;
+		res = proxy.res;
 	}
 	else
 	{

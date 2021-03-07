@@ -46,6 +46,11 @@ typedef struct	s_printer {
 	t_flag	flag;
 }				t_printer;
 
+typedef struct	s_flag_i {
+	t_flag	flag;
+	int		i;
+}				t_flag_i;
+
 int			ft_printf(const char *str, ...);
 t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag);
 t_jchar		ft_joinchar(char *str, char c, t_flag flag, int si);
@@ -85,5 +90,9 @@ int			ft_is_flag(char *str);
 int			ft_is_with(char *str);
 int			ft_is_prevision(char *str);
 int			ft_isletter(char *str);
+t_proxy		deal_with_c(t_flag flag, t_res res, char *str);
+t_flag_i	c_with_pos(t_flag flag, char *str, int i);
+t_flag_i	c_with_neg(t_flag flag, char *str, int i);
+t_flag_i	c_with_neg_or_pos(t_flag flag, char *str, int i);
 
 #endif
