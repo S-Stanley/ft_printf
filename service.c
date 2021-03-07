@@ -59,67 +59,65 @@ char		*ft_add_right(char *s, int size_min, char sep)
 	return (s2);
 }
 
-char		*ft_add_left(char *s, int size_min, char sep)
+char		*add_left_pos(int size_min, char *s, char sep)
 {
 	int		size;
-	char	*s2;
 	int		i;
 	int		x;
+	char	*s2;
 
 	i = 0;
 	x = 0;
-	if (size_min > 0)
+	size = size_min - ft_strlen(s);
+	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
+	if (ft_atoi(s) < 0 && sep == '0' && ft_strcmp(s, "%") != 0)
 	{
-		size = size_min - ft_strlen(s);
-		s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
-		if (ft_atoi(s) < 0 && sep == '0' && ft_strcmp(s, "%") != 0)
-		{
-			s2[i] = '-';
-			i++;
-			if (ft_atoi(s) == -2147483648)
-				s = "2147483648";
-			else
-				s = ft_itoa(ft_atoi(s) * -1);
-		}
-		while (size-- > 0)
-		{
-			s2[i] = sep;
-			i++;
-		}
-		while (s[x])
-		{
-			s2[i] = s[x];
-			i++;
-			x++;
-		}
-		s2[i] = '\0';
-	}
-	else
-	{
-		if (size_min < 0)
-			size_min = -size_min;
-		size = size_min - ft_strlen(s);
-		s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
-		if (ft_atoi(s) < 0 && sep == '0')
-		{
-			s2[i] = '-';
-			i++;
+		s2[i++] = '-';
+		if (ft_atoi(s) == -2147483648)
+			s = "2147483648";
+		else
 			s = ft_itoa(ft_atoi(s) * -1);
-		}
-		while (s[x])
-		{
-			s2[i] = s[x];
-			i++;
-			x++;
-		}
-		while (size-- > 0)
-		{
-			s2[i] = sep;
-			i++;
-		}
-		s2[i] = '\0';
 	}
+	while (size-- > 0)
+		s2[i++] = sep;
+	while (s[x])
+		s2[i++] = s[x++];
+	s2[i] = '\0';
 	return (s2);
+}
+
+char		*add_left_neg(int size_min, char *s, char sep)
+{
+	int		size;
+	int		i;
+	int		x;
+	char	*s2;
+
+	i = 0;
+	x = 0;
+	if (size_min < 0)
+		size_min = -size_min;
+	size = size_min - ft_strlen(s);
+	s2 = malloc(sizeof(char) * (ft_strlen(s) + size_min + 1));
+	if (ft_atoi(s) < 0 && sep == '0')
+	{
+		s2[i++] = '-';
+		s = ft_itoa(ft_atoi(s) * -1);
+	}
+	while (s[x])
+		s2[i++] = s[x++];
+	while (size-- > 0)
+		s2[i++] = sep;
+	s2[i] = '\0';
+	return (s2);
+}
+
+char		*ft_add_left(char *s, int size_min, char sep)
+{
+	if (size_min > 0)
+		return (add_left_pos(size_min, s, sep));
+	else
+		return (add_left_neg(size_min, s, sep));
 }
 
 char		*ft_add_left_n(char *s, int size_min, char sep, char letter)

@@ -19,25 +19,10 @@ t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res)
 	return (printer);
 }
 
-t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
+t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 {
-	char		*s;
-	t_gvalue	gvalue;
 	t_printer	printer;
-	int			i;
-	t_proxy		proxy;
 
-	if (str[res.i] == '.' && flag.precis == 0)
-		res.i++;
-	gvalue = get_value(str[res.i], data, flag);
-	s = gvalue.str;
-	flag = gvalue.flag;
-	printer = return_it_now(flag, str, s, res);
-	if (printer.result)
-		return (printer);
-	flag.letter = str[res.i];
-	if (flag.letter == 'p' && flag.precis != 0)
-		flag.precis = flag.precis + 2;
 	if (flag.isprecision && flag.letter != 'c')
 	{
 		if (str[res.i] == 's' || str[res.i] == 'c' || str[res.i] == '%')
@@ -55,6 +40,16 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 				flag.sep = ' ';
 		}
 	}
+	printer.flag = flag;
+	printer.res = res;
+	printer.s = s;
+	return (printer);
+}
+
+t_printer	manage_width(t_flag flag, char *s, char *str, t_res res)
+{
+	t_printer printer;
+
 	if (flag.width)
 	{
 		if (ft_atoi(s) == 0 && flag.width == 0)
@@ -64,20 +59,56 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		else
 			s = ft_add_left(s, flag.width, flag.sep);
 	}
-	if (flag.letter == 'p' && ft_find(s, "0x"))
-		s = put_it_first(s, "0x");
-	if (flag.len != 0 && flag.letter == 'c')
+	printer.res = res;
+	printer.flag = flag;
+	printer.s = s;
+	return (printer);
+}
+
+t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
+{
+	t_proxy		proxy;
+	t_printer	printer;
+	
+	flag.letter = str[res.i];
+	if (flag.letter == 'p' && flag.precis != 0)
+		flag.precis = flag.precis + 2;
+	printer = manage_precis(flag, s, str, res);
+	printer = manage_width(printer.flag, printer.s, str, printer.res);
+	s = printer.s;
+	flag = printer.flag;
+	res = printer.res;
+	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
+		printer.s = put_it_first(printer.s, "0x");
+	if (printer.flag.len != 0 && printer.flag.letter == 'c')
 	{
-		proxy = deal_with_c(flag, res, str);
-		flag = proxy.flag;
-		res = proxy.res;
+		proxy = deal_with_c(printer.flag, printer.res, str);
+		printer.flag = proxy.flag;
+		printer.res = proxy.res;
 	}
 	else
 	{
-		res.str = ft_join(res.str, s);
-		res.i++;
+		printer.res.str = ft_join(printer.res.str, printer.s);
+		printer.res.i++;
 	}
-	printer.res = res;
-	printer.flag = flag;
+	return (printer);
+}
+
+t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
+{
+	char		*s;
+	t_gvalue	gvalue;
+	t_printer	printer;
+	int			i;
+
+	if (str[res.i] == '.' && flag.precis == 0)
+		res.i++;
+	gvalue = get_value(str[res.i], data, flag);
+	s = gvalue.str;
+	flag = gvalue.flag;
+	printer = return_it_now(flag, str, s, res);
+	if (printer.result)
+		return (printer);
+	printer = printer_proxy(flag, str, s, res);
 	return (printer);
 }

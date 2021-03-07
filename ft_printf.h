@@ -45,6 +45,8 @@ typedef struct	s_printer {
 	t_res	res;
 	t_flag	flag;
 	int		result;
+	char	*s;
+	char	*str;
 }				t_printer;
 
 typedef struct	s_flag_i {
@@ -95,5 +97,11 @@ t_proxy		deal_with_c(t_flag flag, t_res res, char *str);
 t_flag_i	c_with_pos(t_flag flag, char *str, int i);
 t_flag_i	c_with_neg(t_flag flag, char *str, int i);
 t_flag_i	c_with_neg_or_pos(t_flag flag, char *str, int i);
+t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res);
+t_printer	manage_width(t_flag flag, char *s, char *str, t_res res);
+t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res);
+t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res);
+char		*add_left_neg(int size_min, char *s, char sep);
+char		*add_left_pos(int size_min, char *s, char sep);
 
 #endif
