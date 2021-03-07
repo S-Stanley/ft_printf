@@ -75,7 +75,7 @@ char	*give_s_of_itoa_hexa(unsigned int nb, int add)
 	int		c;
 	int		i;
 
-	s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
+	s = get_malloc(ft_count_hexa(nb) + 2);
 	i = 0;
 	while (nb >= 1)
 	{
