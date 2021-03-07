@@ -46,7 +46,7 @@ t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 			if (flag.letter != '%')
 				flag.sep = '0';
 			s = ft_add_left_n(s, flag.precis, flag.sep, flag.letter);
-			if (ft_isnum(flag.letter) && flag.precis < 0 && flag.right == 0 && flag.flag == '0')
+			if (ft_isnum(flag.letter) && ft_isnum_plus(flag))
 				flag.sep = '0';
 			else
 				flag.sep = ' ';
@@ -81,7 +81,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
 	t_proxy		proxy;
 	t_printer	printer;
-	
+
 	flag.letter = str[res.i];
 	if (flag.letter == 'p' && flag.precis != 0)
 		flag.precis = flag.precis + 2;

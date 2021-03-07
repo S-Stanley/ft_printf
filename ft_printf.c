@@ -41,7 +41,7 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	return (render);
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
 	va_list	data;
 	t_res	res;

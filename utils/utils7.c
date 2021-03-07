@@ -49,3 +49,10 @@ char	*get_malloc(int size)
 		return (NULL);
 	return (s);
 }
+
+int			ft_isnum_plus(t_flag flag)
+{
+	if (flag.precis < 0 && flag.right == 0 && flag.flag == '0')
+		return (1);
+	return (0);
+}
