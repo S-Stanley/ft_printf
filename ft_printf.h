@@ -44,6 +44,7 @@ typedef struct	s_gvalue {
 typedef struct	s_printer {
 	t_res	res;
 	t_flag	flag;
+	int		result;
 }				t_printer;
 
 typedef struct	s_flag_i {
