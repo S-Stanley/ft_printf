@@ -15,9 +15,8 @@ int		ft_intlen(int nb)
 
 char	*ft_itoa(int nb)
 {
-	int	i;
 	char	*s;
-	int	minus;
+	int		minus;
 
 	if (nb == 0)
 		return (ft_strdup("0"));
@@ -25,24 +24,13 @@ char	*ft_itoa(int nb)
 		return (ft_strdup("2147483647"));
 	if (nb == -2147483648)
 		return (ft_strdup("-2147483648"));
-	i = 0;
 	minus = 0;
-	s = malloc(sizeof(char) * (ft_intlen(nb) + 2));
-	if (!s)
-		return (NULL);
 	if (nb < 0)
 	{
 		nb = -nb;
 		minus = 1;
 	}
-	while (nb >= 1)
-	{
-		s[i] = (nb % 10) + 48;
-		i++;
-		nb = nb / 10;
-	}
-	s[i] = '\0';
-	s = reverse_table(s);
+	s = give_s_itoa(nb);
 	if (minus)
 		s = ft_join("-", s);
 	return (s);

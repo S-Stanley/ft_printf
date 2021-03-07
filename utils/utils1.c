@@ -59,29 +59,22 @@ char	*str_that_address(unsigned long long n)
 	int					i;
 
 	i = -1;
-	if (n == 0)
-		return (ft_strdup("0x0"));
-	if (n == 1)
-		return (ft_strdup("0x1"));
+	if (n == 0 || n == 1)
+		return (address_exception(n));
 	container = 16;
 	str = malloc(sizeof(char) * (ft_intlen(n) + 3));
 	while (n / container >= 16)
 		container = container * 16;
-	str[++i] = '0';
-	str[++i] = 'x';
 	while (container > 0)
 	{
 		tmp = n / container + '0';
 		if (tmp > '9')
-		{
-			tmp = tmp + 39;
-			str[++i] = tmp;
-		}
+			str[++i] = tmp + 39;
 		else
 			str[++i] = tmp;
 		n = n % container;
 		container = container / 16;
 	}
 	str[++i] = '\0';
-	return (str);
+	return (ft_join("0x", str));
 }

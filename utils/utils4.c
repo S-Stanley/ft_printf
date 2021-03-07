@@ -62,7 +62,6 @@ char	*get_string(va_list data)
 
 t_gvalue	get_value(char c, va_list data, t_flag flag)
 {
-	t_jchar		joinc;
 	t_gvalue	render;
 
 	render.flag = flag;
@@ -79,11 +78,7 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'u')
 		render.str = ft_putinsigned_int(va_arg(data, unsigned int));
 	else if (c == 'c')
-	{
-		joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
-		render.flag.len = joinc.len + render.flag.len;
-		render.str = joinc.str;
-	}
+		return (get_c_value(data, flag, render));
 	else if (c == '%')
 		render.str = ft_strdup("%");
 	else

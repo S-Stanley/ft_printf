@@ -72,3 +72,33 @@ char	*put_it_first(char *str, char *to_move)
 	s2[x] = '\0';
 	return (s2);
 }
+
+char	*address_exception(unsigned long long n)
+{
+	if (n == 0)
+		return (ft_strdup("0x0"));
+	else
+		return (ft_strdup("0x1"));
+}
+
+char	*give_s_of_itoa_hexa(unsigned int nb, int add)
+{
+	char	*s;
+	int		c;
+	int		i;
+
+	s = malloc(sizeof(char) * (ft_count_hexa(nb) + 2));
+	i = 0;
+	while (nb >= 1)
+	{
+		c = (nb % 16) + 48;
+		if (c >= 58)
+			c = c + 7 + add;
+		s[i] = c;
+		i++;
+		nb = nb / 16;
+	}
+	s[i] = '\0';
+	s = reverse_table(s);
+	return (s);
+}

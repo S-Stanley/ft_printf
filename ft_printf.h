@@ -103,5 +103,10 @@ t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res);
 t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res);
 char		*add_left_neg(int size_min, char *s, char sep);
 char		*add_left_pos(int size_min, char *s, char sep);
+char		*add_left_n_else(char *s, int size, char sep, char letter);
+char		*address_exception(unsigned long long n);
+char		*give_s_of_itoa_hexa(unsigned int nb, int add);
+t_gvalue	get_c_value(va_list data, t_flag flag, t_gvalue render);
+char		*give_s_itoa(int nb);
 
 #endif
