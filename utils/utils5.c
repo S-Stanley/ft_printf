@@ -44,7 +44,7 @@ char	*reverse_table(char *str)
 
 	i = 0;
 	x = ft_strlen(str) - 1;
-	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	s = get_malloc(ft_strlen(str) + 1);
 	if (!s)
 		return (NULL);
 	while (x >= 0)
@@ -65,7 +65,7 @@ char	*ft_join(char *s1, char *s2)
 
 	i = 0;
 	x = 0;
-	s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s = get_malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!s)
 		return (NULL);
 	while (s1[i])

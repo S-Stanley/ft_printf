@@ -15,7 +15,7 @@ char	*give_s_itoa(int nb)
 	char	*s;
 	int		i;
 
-	s = malloc(sizeof(char) * (ft_intlen(nb) + 2));
+	s = get_malloc(ft_intlen(nb) + 2);
 	i = 0;
 	while (nb >= 1)
 	{
@@ -25,5 +25,15 @@ char	*give_s_itoa(int nb)
 	}
 	s[i] = '\0';
 	s = reverse_table(s);
+	return (s);
+}
+
+char	*get_malloc(int size)
+{
+	char	*s;
+
+	s = malloc(sizeof(char) * size);
+	if (!s)
+		return (NULL);
 	return (s);
 }

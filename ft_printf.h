@@ -108,5 +108,6 @@ char		*address_exception(unsigned long long n);
 char		*give_s_of_itoa_hexa(unsigned int nb, int add);
 t_gvalue	get_c_value(va_list data, t_flag flag, t_gvalue render);
 char		*give_s_itoa(int nb);
+char		*get_malloc(int size);
 
 #endif

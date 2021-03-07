@@ -62,7 +62,7 @@ char	*str_that_address(unsigned long long n)
 	if (n == 0 || n == 1)
 		return (address_exception(n));
 	container = 16;
-	str = malloc(sizeof(char) * (ft_intlen(n) + 3));
+	str = get_malloc(ft_intlen(n) + 3);
 	while (n / container >= 16)
 		container = container * 16;
 	while (container > 0)

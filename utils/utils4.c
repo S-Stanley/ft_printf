@@ -16,7 +16,7 @@ char	*ft_joinchar2(char *str, char c)
 	char	*s;
 
 	i = -1;
-	s = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	s = get_malloc(ft_strlen(str) + 2);
 	if (!s)
 		return (NULL);
 	while (str[++i])
@@ -34,7 +34,7 @@ t_jchar	ft_joinchar(char *str, char c, t_flag flag, int si)
 
 	i = -1;
 	render.len = 0;
-	s = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	s = get_malloc(ft_strlen(str) + 2);
 	if (!s)
 	{
 		render.str = NULL;

@@ -6,7 +6,7 @@ char		*ft_strndup(char *str, int max)
 	char	*s;
 
 	i = -1;
-	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	s = get_malloc(ft_strlen(str) + 1);
 	if (!s)
 		return (NULL);
 	if (max < 0)
@@ -57,7 +57,7 @@ char		*ft_strdup(char *str)
 	int		i;
 
 	i = -1;
-	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	s = get_malloc(ft_strlen(str) + 1);
 	if (!s)
 		return (NULL);
 	while (str[++i])

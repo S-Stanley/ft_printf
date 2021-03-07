@@ -17,7 +17,7 @@ char	*ft_clean(char *str, char *to_del)
 	char	*s;
 	int		index;
 
-	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	s = get_malloc(ft_strlen(str) + 1);
 	i = 0;
 	index = -1;
 	while (str[i])
@@ -46,7 +46,7 @@ char	*put_it_first(char *str, char *to_move)
 	int		x;
 	int		y;
 
-	s2 = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	s2 = get_malloc(ft_strlen(str) + 1);
 	s = ft_clean(str, to_move);
 	i = 0;
 	x = 0;

@@ -18,7 +18,7 @@ char	*ft_putinsigned_int(unsigned int n)
 	char			*s;
 	int				i;
 
-	s = malloc(sizeof(char) * (unsigned_len(n) + 1));
+	s = get_malloc(unsigned_len(n) + 1);
 	i = -1;
 	if (n == 0 || n == 1)
 		return (ft_strndup(ft_itoa(n), 2));
