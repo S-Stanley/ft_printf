@@ -33,13 +33,13 @@ typedef struct	s_flag {
 	char	letter;
 	int		iswidth;
 	int		len;
-	int 	neg;
+	int		neg;
 	char	flag;
 	int		count;
 }				t_flag;
 
 typedef struct	s_proxy {
-	t_res 	res;
+	t_res	res;
 	t_flag	flag;
 }				t_proxy;
 
@@ -70,7 +70,7 @@ int			ft_printf(const char *str, ...);
 t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag);
 t_jchar		ft_joinchar(char *str, char c, t_flag flag, int si);
 int			ft_strlen(char *str);
-int 		ft_putstr(char *str, t_flag flag);
+int			ft_putstr(char *str, t_flag flag);
 char		*ft_strdup(char *str);
 t_gvalue	get_value(char c, va_list data, t_flag flag);
 char		*ft_join(char *s1, char *s2);
