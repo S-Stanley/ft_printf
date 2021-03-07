@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res)
 {

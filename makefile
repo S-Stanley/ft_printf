@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c verif.c service.c printer.c utils/utils1.c utils/utils2.c utils/utils3.c utils/utils4.c utils/utils5.c utils/utils6.c utils/utils7.c printer/deal_with_c.c services/service0.c
+SRCS = ft_printf.c verif/verif.c services/service.c printer/printer.c utils/utilsa.c utils/utilsb.c utils/utilsc.c utils/utilsd.c utils/utilse.c utils/utilsf.c utils/utilsg.c printer/printerb.c services/serviceb.c
 OBJS = $(SRCS:.c=.o)
 FLAGS = 
 CC = gcc
