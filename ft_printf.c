@@ -15,7 +15,7 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	}
 	if (ft_is_with(&str[res.i]))
 	{
-		flag = get_width(str, res, data, flag); 
+		flag = get_width(str, res, data, flag);
 		res.i = flag.i;
 	}
 	if (ft_is_prevision(&str[res.i]))

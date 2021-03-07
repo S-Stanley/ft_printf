@@ -2,7 +2,7 @@
 
 t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 {
-	char 		*s;
+	char		*s;
 	t_gvalue	gvalue;
 	t_printer	printer;
 	int			i;
@@ -53,7 +53,6 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	}
 	if (flag.letter == 'p' && ft_find(s, "0x"))
 		s = put_it_first(s, "0x");
-
 	if (flag.len != 0 && flag.letter == 'c')
 	{
 		i = 0;

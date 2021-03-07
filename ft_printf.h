@@ -79,8 +79,6 @@ t_flag		ft_get_flag(t_flag flag, t_res res, char *str);
 t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag);
 t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag);
 char		*ft_add_left_n(char *s, int size_min, char sep, char letter);
-// char		*update_with_precis(char *str, t_res res, t_flag flag, char *s);
-// char		*update_with_width(char *str, t_res res, t_flag flag, char *s);
 
 int			ft_is_flag(char *str);
 int			ft_is_with(char *str);

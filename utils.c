@@ -195,8 +195,8 @@ char	*ft_itoa_hexa_maj(int nbr)
 long long	ft_atoi(char *str)
 {
 	long long int	nb;
-	int	i;
-	int	minus;
+	int				i;
+	int				minus;
 
 	minus = 1;
 	nb = 0;
@@ -216,7 +216,7 @@ long long	ft_atoi(char *str)
 
 char		*ft_strndup(char *str, int max)
 {
-	int	i;
+	int		i;
 	char	*s;
 
 	i = -1;
@@ -231,7 +231,7 @@ char		*ft_strndup(char *str, int max)
 	return (s);
 }
 
-t_flag		init_flags()
+t_flag		init_flags(void)
 {
 	t_flag	flag;
 
@@ -268,7 +268,7 @@ t_flag		re_init_flags(t_flag ex)
 char		*ft_strdup(char *str)
 {
 	char	*s;
-	int	i;	
+	int		i;
 
 	i = -1;
 	s = malloc(sizeof(char) * (ft_strlen(str) + 1));
@@ -297,7 +297,7 @@ int		ft_putstr(char *str, t_flag flag)
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
-	return (ft_strlen(str) + flag.count);	
+	return (ft_strlen(str) + flag.count);
 }
 
 char	*ft_joinchar2(char *str, char c)
@@ -310,7 +310,7 @@ char	*ft_joinchar2(char *str, char c)
 	if (!s)
 		return (NULL);
 	while (str[++i])
-			s[i] = str[i];
+		s[i] = str[i];
 	s[i] = c;
 	s[++i] = '\0';
 	return (s);
@@ -331,7 +331,7 @@ t_jchar	ft_joinchar(char *str, char c, t_flag flag, int si)
 		return (render);
 	}
 	while (str[++i])
-			s[i] = str[i];
+		s[i] = str[i];
 	if (!c && si == 1)
 		render.len = 1;
 	s[i] = c;
@@ -354,7 +354,7 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 {
 	t_jchar		joinc;
 	t_gvalue	render;
-	
+
 	render.flag = flag;
 	if (c == 's')
 		render.str = get_string(data);
@@ -369,7 +369,7 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'u')
 		render.str = ft_putinsigned_int(va_arg(data, unsigned int));
 	else if (c == 'c')
-	{	
+	{
 		joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
 		render.flag.len = joinc.len + render.flag.len;
 		render.str = joinc.str;

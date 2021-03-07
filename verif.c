@@ -40,7 +40,7 @@ int	ft_is_prevision(char *str)
 
 int	ft_isletter(char *str)
 {
-	int	i;
+	int		i;
 	char	*flags;
 
 	flags = ft_strdup("cspdiuxX%");
