@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag)
+t_flag		ft_get_preci(char *str, t_res res, va_list data, t_flag flag)
 {
 	res.i++;
 	flag.isprecision = 1;

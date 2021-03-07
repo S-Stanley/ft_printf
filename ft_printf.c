@@ -32,7 +32,7 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	}
 	if (ft_is_prevision(&str[res.i]))
 	{
-		flag = ft_get_precision(str, res, data, flag);
+		flag = ft_get_preci(str, res, data, flag);
 		res.i = flag.i;
 	}
 	printer = ft_printer(str, res, data, flag);
