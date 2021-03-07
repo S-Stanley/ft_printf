@@ -3,6 +3,7 @@
 t_flag		ft_get_precision(char *str, t_res res, va_list data, t_flag flag)
 {
 	res.i++;
+	flag.isprecision = 1;
 	if (str[res.i] == '*')
 	{
 		flag.precis = va_arg(data, int);

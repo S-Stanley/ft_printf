@@ -20,7 +20,6 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	}
 	if (ft_is_prevision(&str[res.i]))
 	{
-		flag.isprecision = 1;
 		flag = ft_get_precision(str, res, data, flag);
 		res.i = flag.i;
 	}
@@ -37,9 +36,8 @@ int		ft_printf(const char *str, ...)
 	t_flag	flag;
 	t_proxy	render;
 
-	res.i = 0;
-	res.str = ft_strdup("");
 	va_start(data, str);
+	res = init_res();
 	flag = init_flags();
 	while (str[res.i])
 	{

@@ -1,12 +1,6 @@
 {
 	"files.associations": {
-		"sstream": "c",
-		"algorithm": "c",
-		"*.tcc": "c",
-		"fstream": "c",
-		"memory": "c",
-		"new": "c",
-		"numeric": "c",
-		"ft_printf.h": "c"
+		"ft_printf.h": "c",
+		"stdlib.h": "c"
 	}
 }
