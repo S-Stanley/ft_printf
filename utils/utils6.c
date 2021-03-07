@@ -52,23 +52,11 @@ char	*put_it_first(char *str, char *to_move)
 	x = 0;
 	y = 0;
 	while (s[i] == ' ')
-	{
-		s2[x] = s[i];
-		x++;
-		i++;
-	}
+		s2[x++] = s[i++];
 	while (to_move[y])
-	{
-		s2[x] = to_move[y];
-		x++;
-		y++;
-	}
+		s2[x++] = to_move[y++];
 	while (s[i])
-	{
-		s2[x] = s[i];
-		x++;
-		i++;
-	}
+		s2[x++] = s[i++];
 	s2[x] = '\0';
 	return (s2);
 }
