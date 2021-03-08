@@ -87,7 +87,7 @@ char		*add_left_pos(int size_min, char *s, char sep)
 	{
 		s2[i++] = '-';
 		if (ft_atoi(s) == -2147483648)
-			s = "2147483648";
+			s = ft_strdup("2147483648");
 		else
 			s = ft_itoa(ft_atoi(s) * -1);
 	}
@@ -96,6 +96,7 @@ char		*add_left_pos(int size_min, char *s, char sep)
 	while (s[x])
 		s2[i++] = s[x++];
 	s2[i] = '\0';
+	free(s);
 	return (s2);
 }
 
