@@ -86,10 +86,13 @@ char		*add_left_pos(int size_min, char *s, char sep)
 	if (ft_atoi(s) < 0 && sep == '0' && ft_strcmp(s, "%") != 0)
 	{
 		s2[i++] = '-';
-		if (ft_atoi(s) == -2147483648)
+		x = ft_atoi(s);
+		free(s);
+		if (x == -2147483648)
 			s = ft_strdup("2147483648");
 		else
-			s = ft_itoa(ft_atoi(s) * -1);
+			s = ft_itoa(x * -1);
+		x = 0;
 	}
 	while (size-- > 0)
 		s2[i++] = sep;
