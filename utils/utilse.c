@@ -66,6 +66,7 @@ char	*reverse_table(char *str)
 		x--;
 	}
 	s[i] = '\0';
+	free(str);
 	return (s);
 }
 
