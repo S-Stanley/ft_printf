@@ -60,8 +60,12 @@ int	ft_isletter(char *str)
 	while (flags[i])
 	{
 		if (str[0] == flags[i])
+		{
+			free(flags);
 			return (1);
+		}
 		i++;
 	}
+	free(flags);
 	return (0);
 }
