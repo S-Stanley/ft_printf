@@ -84,7 +84,7 @@ t_proxy		deal_with_c(t_flag flag, t_res res, char *str)
 		res.i++;
 		flag.count++;
 	}
-	res.str = ft_join(res.str, "");
+	res.str = ft_join(res.str, ft_strdup(""));
 	proxy.res = res;
 	proxy.flag = flag;
 	return (proxy);

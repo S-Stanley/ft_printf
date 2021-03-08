@@ -44,7 +44,7 @@ char	*ft_itoa(int nb)
 	}
 	s = give_s_itoa(nb);
 	if (minus)
-		s = ft_join("-", s);
+		s = ft_join(ft_strdup("-"), s);
 	return (s);
 }
 

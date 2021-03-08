@@ -62,7 +62,7 @@ char		*ft_itoa_hexa_min(int nbr)
 	}
 	s = give_s_of_itoa_hexa(nb, 32);
 	if (minus)
-		s = ft_join("-", s);
+		s = ft_join(ft_strdup("-"), s);
 	return (s);
 }
 
@@ -83,7 +83,7 @@ char		*ft_itoa_hexa_maj(int nbr)
 	}
 	s = give_s_of_itoa_hexa(nb, 0);
 	if (minus)
-		s = ft_join("-", s);
+		s = ft_join(ft_strdup("-"), s);
 	return (s);
 }
 

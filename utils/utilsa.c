@@ -88,5 +88,5 @@ char	*str_that_address(unsigned long long n)
 		container = container / 16;
 	}
 	str[++i] = '\0';
-	return (ft_join("0x", str));
+	return (ft_join(ft_strdup("0x"), str));
 }

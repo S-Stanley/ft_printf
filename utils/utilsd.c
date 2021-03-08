@@ -35,6 +35,7 @@ char		*ft_joinchar2(char *str, char c)
 		s[i] = str[i];
 	s[i] = c;
 	s[++i] = '\0';
+	free(str);
 	return (s);
 }
 

@@ -16,7 +16,7 @@ t_gvalue	get_c_value(va_list data, t_flag flag, t_gvalue render)
 {
 	t_jchar		joinc;
 
-	joinc = ft_joinchar("", (char)va_arg(data, int), flag, 1);
+	joinc = ft_joinchar(ft_strdup(""), (char)va_arg(data, int), flag, 1);
 	render.flag.len = joinc.len + render.flag.len;
 	render.str = joinc.str;
 	return (render);
