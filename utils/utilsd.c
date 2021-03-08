@@ -74,7 +74,7 @@ char		*get_string(va_list data)
 	s = va_arg(data, char *);
 	if (!s)
 		return (ft_strdup("(null)"));
-	return (s);
+	return (ft_strdup(s));
 }
 
 t_gvalue	get_value(char c, va_list data, t_flag flag)

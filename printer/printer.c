@@ -101,6 +101,7 @@ char	*ft_join2(char *s1, char *s2)
 	}
 	s[i] = '\0';
 	free(s1);
+	free(s2);
 	return (s);
 }
 
@@ -115,7 +116,6 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		flag.precis = flag.precis + 2;
 	printer = manage_precis(flag, s, str, res);
 	printer = manage_width(printer.flag, printer.s, str, printer.res);
-	s = printer.s;
 	flag = printer.flag;
 	res = printer.res;
 	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
