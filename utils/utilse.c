@@ -92,6 +92,7 @@ char	*ft_join(char *s1, char *s2)
 		i++;
 	}
 	s[i] = '\0';
+	free(s1);
 	return (s);
 }
 
