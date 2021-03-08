@@ -147,7 +147,10 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	flag = gvalue.flag;
 	printer = return_it_now(flag, str, gvalue.str, res);
 	if (printer.result)
+	{
+		free(gvalue.str);
 		return (printer);
+	}
 	printer = printer_proxy(flag, str, gvalue.str, res);
 	return (printer);
 }
