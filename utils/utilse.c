@@ -29,6 +29,7 @@ char	*ft_itoa(int nb)
 {
 	char	*s;
 	int		minus;
+	char	*s2;
 
 	if (nb == 0)
 		return (ft_strdup("0"));
@@ -94,6 +95,7 @@ char	*ft_join(char *s1, char *s2)
 	}
 	s[i] = '\0';
 	free(s1);
+	free(s2);
 	return (s);
 }
 
