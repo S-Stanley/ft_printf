@@ -15,11 +15,14 @@
 int			ft_putstr(char *str, t_flag flag)
 {
 	int	i;
+	int	size;
 
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
-	return (ft_strlen(str) + flag.count);
+	size = ft_strlen(str);
+	free(str);
+	return (size + flag.count);
 }
 
 char		*ft_joinchar2(char *str, char c)
