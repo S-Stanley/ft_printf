@@ -68,6 +68,7 @@ char		*ft_add_right(char *s, int size_min, char sep)
 	while (size-- > 0)
 		s2[i++] = sep;
 	s2[i] = '\0';
+	free(s);
 	return (s2);
 }
 
@@ -121,5 +122,6 @@ char		*add_left_neg(int size_min, char *s, char sep)
 	while (size-- > 0)
 		s2[i++] = sep;
 	s2[i] = '\0';
+	free(s);
 	return (s2);
 }

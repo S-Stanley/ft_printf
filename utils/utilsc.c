@@ -26,6 +26,7 @@ char		*ft_strndup(char *str, int max)
 	while (str[++i] && i < max)
 		s[i] = str[i];
 	s[i] = '\0';
+	free(str);
 	return (s);
 }
 

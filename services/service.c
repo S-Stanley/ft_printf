@@ -45,6 +45,7 @@ char		*add_left_n_else(char *s, int size, char sep, char letter)
 	while (s[x])
 		s2[i++] = s[x++];
 	s2[i] = '\0';
+	free(s);
 	return (s2);
 }
 
@@ -67,6 +68,7 @@ char		*ft_add_left_n(char *s, int size_min, char sep, char letter)
 		while (s[x] && x < size)
 			s2[i++] = s[x++];
 		s2[i] = '\0';
+		free(s);
 		return (s2);
 	}
 	else

@@ -47,6 +47,7 @@ char	*ft_clean(char *str, char *to_del)
 		i++;
 	}
 	s[++index] = '\0';
+	free(str);
 	return (s);
 }
 
