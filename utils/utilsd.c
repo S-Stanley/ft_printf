@@ -63,6 +63,7 @@ t_jchar		ft_joinchar(char *str, char c, t_flag flag, int si)
 	s[i] = c;
 	s[++i] = '\0';
 	render.str = s;
+	free(str);
 	return (render);
 }
 
