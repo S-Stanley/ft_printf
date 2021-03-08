@@ -34,6 +34,7 @@ t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res)
 t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 {
 	t_printer	printer;
+	char		*p;
 
 	if (flag.isprecision && flag.letter != 'c')
 	{
@@ -68,7 +69,10 @@ t_printer	manage_width(t_flag flag, char *s, char *str, t_res res)
 	if (flag.width)
 	{
 		if (ft_atoi(s) == 0 && flag.width == 0)
+		{
+			free(s);
 			s = ft_strdup("");
+		}
 		if (flag.right)
 			s = ft_add_right(s, flag.width, flag.sep);
 		else
