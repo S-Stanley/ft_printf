@@ -71,6 +71,7 @@ char	*put_it_first(char *str, char *to_move)
 	while (s[i])
 		s2[x++] = s[i++];
 	s2[x] = '\0';
+	free(s);
 	return (s2);
 }
 

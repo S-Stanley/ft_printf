@@ -32,8 +32,6 @@ char		*ft_joinchar2(char *str, char c)
 
 	i = -1;
 	s = get_malloc(ft_strlen(str) + 2);
-	if (!s)
-		return (NULL);
 	while (str[++i])
 		s[i] = str[i];
 	s[i] = c;

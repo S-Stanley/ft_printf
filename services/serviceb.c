@@ -119,7 +119,10 @@ char		*add_left_neg(int size_min, char *s, char sep)
 	if (ft_atoi(s) < 0 && sep == '0')
 	{
 		s2[i++] = '-';
-		s = ft_itoa(ft_atoi(s) * -1);
+		x = ft_atoi(s);
+		free(s);
+		s = ft_itoa(x * -1);
+		x = 0;
 	}
 	while (s[x])
 		s2[i++] = s[x++];
