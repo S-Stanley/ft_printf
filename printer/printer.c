@@ -122,6 +122,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		printer.s = put_it_first(printer.s, "0x");
 	if (printer.flag.len != 0 && printer.flag.letter == 'c')
 	{
+		free(printer.s);
 		proxy = deal_with_c(printer.flag, printer.res, str);
 		printer.flag = proxy.flag;
 		printer.res = proxy.res;
@@ -136,7 +137,6 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 
 t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 {
-	char		*s;
 	t_gvalue	gvalue;
 	t_printer	printer;
 	int			i;
@@ -144,11 +144,10 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
-	s = gvalue.str;
 	flag = gvalue.flag;
-	printer = return_it_now(flag, str, s, res);
+	printer = return_it_now(flag, str, gvalue.str, res);
 	if (printer.result)
 		return (printer);
-	printer = printer_proxy(flag, str, s, res);
+	printer = printer_proxy(flag, str, gvalue.str, res);
 	return (printer);
 }
