@@ -12,7 +12,6 @@
 
 #include "../ft_printf.h"
 
-
 char	*ft_join2(char *s1, char *s2)
 {
 	int		i;

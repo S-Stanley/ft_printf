@@ -40,10 +40,7 @@ t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 		if (str[res.i] == 's' || str[res.i] == 'c' || str[res.i] == '%')
 			s = ft_strndup(s, flag.precis);
 		else if (flag.letter == 'p' && flag.precis == 0)
-		{
-			free(s);
-			s = ft_strdup("0x");
-		}
+			s = ft_strdup_and_free("0x", s);
 		else
 		{
 			if (flag.letter != '%')
