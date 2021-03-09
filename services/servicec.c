@@ -47,6 +47,8 @@ char		*add_left_neg2(int size_min, int size, char sep, char *s)
 	int		x;
 	char	*s2;
 
+	i = 0;
+	x = 0;
 	s2 = get_malloc(ft_strlen(s) + size_min + 1);
 	if (ft_atoi(s) < 0 && sep == '0')
 	{
@@ -65,35 +67,21 @@ char		*add_left_neg2(int size_min, int size, char sep, char *s)
 	return (s2);
 }
 
-char		*add_left_n_else2(char *s, int size, char sep, char letter)
+char		*add_left_n_else2(char *s, int size, char sep, int minus)
 {
-
 	char	*s2;
 	int		x;
 	int		i;
-	int		compare;
-	
+
 	x = 0;
 	i = 0;
 	s2 = get_malloc(ft_strlen(s) + size + 1);
-	if (ft_atoi(s) < 0 && sep == '0' && letter != 'u')
-	{
+	if (minus)
 		s2[i++] = '-';
-		compare = ft_strcmp(s, "-2147483648");
-		x = ft_atoi(s);
-		free(s);
-		if (compare == 0)
-			s = ft_strdup("2147483648");
-		else
-			s = ft_itoa(x * -1);
-		size++;
-		x = 0;
-	}
 	while (size-- > 0)
 		s2[i++] = sep;
 	while (s[x])
 		s2[i++] = s[x++];
 	s2[i] = '\0';
-	free(s);
 	return (s2);
 }

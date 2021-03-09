@@ -58,7 +58,7 @@ t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 	return (printer);
 }
 
-t_printer	manage_width(t_flag flag, char *s, char *str, t_res res)
+t_printer	manage_width(t_flag flag, char *s, t_res res)
 {
 	t_printer printer;
 
@@ -86,7 +86,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	if (flag.letter == 'p' && flag.precis != 0)
 		flag.precis = flag.precis + 2;
 	printer = manage_precis(flag, s, str, res);
-	printer = manage_width(printer.flag, printer.s, str, printer.res);
+	printer = manage_width(printer.flag, printer.s, printer.res);
 	flag = printer.flag;
 	res = printer.res;
 	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
@@ -110,7 +110,6 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 {
 	t_gvalue	gvalue;
 	t_printer	printer;
-	int			i;
 
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;

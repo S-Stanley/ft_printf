@@ -40,7 +40,7 @@ char		*ft_joinchar2(char *str, char c)
 	return (s);
 }
 
-t_jchar		ft_joinchar(char *str, char c, t_flag flag, int si)
+t_jchar		ft_joinchar(char *str, char c, int si)
 {
 	int		i;
 	char	*s;
@@ -93,7 +93,7 @@ t_gvalue	get_value(char c, va_list data, t_flag flag)
 	else if (c == 'u')
 		render.str = ft_putinsigned_int(va_arg(data, unsigned int));
 	else if (c == 'c')
-		return (get_c_value(data, flag, render));
+		return (get_c_value(data, render));
 	else if (c == '%')
 		render.str = ft_strdup("%");
 	else

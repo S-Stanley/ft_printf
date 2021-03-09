@@ -12,7 +12,7 @@
 
 SRCS = ft_printf.c verif/verif.c services/service.c printer/printer.c utils/utilsa.c utils/utilsb.c utils/utilsc.c utils/utilsd.c utils/utilse.c utils/utilsf.c utils/utilsg.c utils/utilsh.c printer/printerb.c services/serviceb.c services/servicec.c
 OBJS = $(SRCS:.c=.o)
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror
 CC = gcc
 NAME = libftprintf.a
 RM = rm -f

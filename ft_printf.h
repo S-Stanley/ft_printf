@@ -68,7 +68,7 @@ typedef struct	s_flag_i {
 
 int				ft_printf(const char *str, ...);
 t_proxy			ft_proxy(char *str, t_res res, va_list data, t_flag flag);
-t_jchar			ft_joinchar(char *str, char c, t_flag flag, int si);
+t_jchar			ft_joinchar(char *str, char c, int si);
 int				ft_strlen(char *str);
 int				ft_putstr(char *str, t_flag flag);
 char			*ft_strdup(char *str);
@@ -110,7 +110,7 @@ t_flag_i		c_with_pos(t_flag flag, char *str, int i);
 t_flag_i		c_with_neg(t_flag flag, char *str, int i);
 t_flag_i		c_with_neg_or_pos(t_flag flag, char *str, int i);
 t_printer		printer_proxy(t_flag flag, char *str, char *s, t_res res);
-t_printer		manage_width(t_flag flag, char *s, char *str, t_res res);
+t_printer		manage_width(t_flag flag, char *s, t_res res);
 t_printer		manage_precis(t_flag flag, char *s, char *str, t_res res);
 t_printer		return_it_now(t_flag flag, char *str, char *s, t_res res);
 char			*add_left_neg(int size_min, char *s, char sep);
@@ -118,7 +118,7 @@ char			*add_left_pos(int size_min, char *s, char sep);
 char			*add_left_n_else(char *s, int size, char sep, char letter);
 char			*address_exception(unsigned long long n);
 char			*give_s_of_itoa_hexa(unsigned int nb, int add);
-t_gvalue		get_c_value(va_list data, t_flag flag, t_gvalue render);
+t_gvalue		get_c_value(va_list data, t_gvalue render);
 char			*give_s_itoa(int nb);
 char			*get_malloc(int size);
 int				ft_isnum_plus(t_flag flag);
@@ -126,6 +126,6 @@ char			*ft_join2(char *s1, char *s2);
 char			*ft_strdup_and_free(char *str, char *to_free);
 char			*add_left_pos2(int size_min, char *s, char sep, int size);
 char			*add_left_neg2(int size_min, int size, char sep, char *s);
-char			*add_left_n_else2(char *s, int size, char sep, char letter);
+char			*add_left_n_else2(char *s, int size, char sep, int minus);
 
 #endif

@@ -29,7 +29,6 @@ char	*ft_itoa(int nb)
 {
 	char	*s;
 	int		minus;
-	char	*s2;
 
 	if (nb == 0)
 		return (ft_strdup("0"));

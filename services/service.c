@@ -23,10 +23,29 @@ char		*ft_add_left(char *s, int size_min, char sep)
 char		*add_left_n_else(char *s, int size, char sep, char letter)
 {
 	char	*s2;
+	int		compare;
+	int		x;
+	int		minus;
 
+	x = 0;
+	minus = 0;
 	if (size < 0)
 		return (s);
-	s2 = add_left_n_else2(s, size, sep, letter);
+	if (ft_atoi(s) < 0 && sep == '0' && letter != 'u')
+	{
+		minus = 1;
+		compare = ft_strcmp(s, "-2147483648");
+		x = ft_atoi(s);
+		free(s);
+		if (compare == 0)
+			s = ft_strdup("2147483648");
+		else
+			s = ft_itoa(x * -1);
+		size++;
+		x = 0;
+	}
+	s2 = add_left_n_else2(s, size, sep, minus);
+	free(s);
 	return (s2);
 }
 
@@ -75,8 +94,6 @@ t_flag		get_width_star(t_flag flag, t_res res, va_list data)
 
 t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 {
-	int		nb;
-
 	while (str[res.i] == '0' || str[res.i] == '-')
 	{
 		if (str[res.i] == '-')
