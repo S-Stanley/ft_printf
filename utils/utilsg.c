@@ -56,3 +56,19 @@ int			ft_isnum_plus(t_flag flag)
 		return (1);
 	return (0);
 }
+
+char	*ft_strdup_and_free(char *str, char *to_free)
+{
+	char	*s;
+	int		i;
+
+	i = -1;
+	s = get_malloc(ft_strlen(str) + 1);
+	if (!s)
+		return (NULL);
+	while (str[++i])
+		s[i] = str[i];
+	s[i] = '\0';
+	free(to_free);
+	return (s);
+}

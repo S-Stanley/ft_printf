@@ -122,5 +122,6 @@ t_gvalue		get_c_value(va_list data, t_flag flag, t_gvalue render);
 char			*give_s_itoa(int nb);
 char			*get_malloc(int size);
 int				ft_isnum_plus(t_flag flag);
+char			*ft_strdup_and_free(char *str, char *to_free);
 
 #endif

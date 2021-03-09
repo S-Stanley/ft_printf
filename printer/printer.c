@@ -34,7 +34,6 @@ t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res)
 t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 {
 	t_printer	printer;
-	char		*p;
 
 	if (flag.isprecision && flag.letter != 'c')
 	{
@@ -69,10 +68,7 @@ t_printer	manage_width(t_flag flag, char *s, char *str, t_res res)
 	if (flag.width)
 	{
 		if (ft_atoi(s) == 0 && flag.width == 0)
-		{
-			free(s);
-			s = ft_strdup("");
-		}
+			s = ft_strdup_and_free("", s);
 		if (flag.right)
 			s = ft_add_right(s, flag.width, flag.sep);
 		else
@@ -83,35 +79,6 @@ t_printer	manage_width(t_flag flag, char *s, char *str, t_res res)
 	printer.s = s;
 	return (printer);
 }
-
-char	*ft_join2(char *s1, char *s2)
-{
-	int		i;
-	int		x;
-	char	*s;
-
-	i = 0;
-	x = 0;
-	s = get_malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!s)
-		return (NULL);
-	while (s1[i])
-	{
-		s[i] = s1[i];
-		i++;
-	}
-	while (s2[x])
-	{
-		s[i] = s2[x];
-		x++;
-		i++;
-	}
-	s[i] = '\0';
-	free(s1);
-	free(s2);
-	return (s);
-}
-
 
 t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
