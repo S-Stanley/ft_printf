@@ -43,8 +43,7 @@ char	*ft_clean(char *str, char *to_del)
 		}
 		if (x != ft_strlen(to_del))
 			i = keep;
-		s[++index] = str[i];
-		i++;
+		s[++index] = str[i++];
 	}
 	s[++index] = '\0';
 	free(str);
