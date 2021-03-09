@@ -57,7 +57,7 @@ int			ft_isnum_plus(t_flag flag)
 	return (0);
 }
 
-char	*ft_strdup_and_free(char *str, char *to_free)
+char		*ft_strdup_and_free(char *str, char *to_free)
 {
 	char	*s;
 	int		i;
