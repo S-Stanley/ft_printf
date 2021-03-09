@@ -29,11 +29,16 @@ char		*ft_putinsigned_int(unsigned int n)
 {
 	char			*s;
 	int				i;
+	char			*s2;
 
 	s = get_malloc(unsigned_len(n) + 1);
 	i = -1;
 	if (n == 0 || n == 1)
-		return (ft_strndup(ft_itoa(n), 2));
+	{
+		free(s);
+		s2 = ft_strndup(ft_itoa(n), 2);
+		return (s2);
+	}
 	while (n >= 1)
 	{
 		s[++i] = (n % 10) + '0';
