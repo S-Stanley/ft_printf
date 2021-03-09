@@ -63,12 +63,12 @@ char	*ft_strdup_and_free(char *str, char *to_free)
 	int		i;
 
 	i = -1;
+	free(to_free);
 	s = get_malloc(ft_strlen(str) + 1);
 	if (!s)
 		return (NULL);
 	while (str[++i])
 		s[i] = str[i];
 	s[i] = '\0';
-	free(to_free);
 	return (s);
 }

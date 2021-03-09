@@ -68,7 +68,10 @@ t_printer	manage_width(t_flag flag, char *s, char *str, t_res res)
 	if (flag.width)
 	{
 		if (ft_atoi(s) == 0 && flag.width == 0)
+		{
+			free(s);
 			s = ft_strdup_and_free("", s);
+		}
 		if (flag.right)
 			s = ft_add_right(s, flag.width, flag.sep);
 		else
