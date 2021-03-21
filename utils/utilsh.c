@@ -39,3 +39,24 @@ char	*ft_join2(char *s1, char *s2)
 	free(s2);
 	return (s);
 }
+
+char	*ft_make_it_neg(char *s)
+{
+	char 	*s2;
+	int		i;
+	int		x;
+
+	s2 = NULL;
+	s2 = malloc(sizeof(char) * (ft_strlen(s) + 2));
+	i = 0;
+	x = 0;
+	s2[x++] = '-';
+	while (s[i])
+	{
+		s2[x] = s[i];
+		x++;
+		i++;
+	}
+	free(s);
+	return (s2);
+}
