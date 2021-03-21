@@ -80,7 +80,8 @@ t_proxy		deal_with_c(t_flag flag, t_res res, char *str)
 	res.i++;
 	while (str[res.i] != '%' && (res.i + 1 < ft_strlen((char *)str)))
 	{
-		write(1, &str[res.i], 1);
+		res.max++;
+		res.str = ft_joinchar2(res.str, str[res.i]);
 		res.i++;
 		flag.count++;
 	}

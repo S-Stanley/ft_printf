@@ -64,8 +64,9 @@ int			ft_printf(const char *str, ...)
 		{
 			res.str = ft_joinchar2(res.str, str[res.i]);
 			res.i++;
+			res.max++;
 		}
 	}
 	va_end(data);
-	return (ft_putstr(res.str, flag));
+	return (ft_putstr(res.str, flag, res.max));
 }

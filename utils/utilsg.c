@@ -72,3 +72,18 @@ char		*ft_strdup_and_free(char *str, char *to_free)
 	s[i] = '\0';
 	return (s);
 }
+
+char		*ft_joinchar_null(char *str)
+{
+	int		i;
+	char	*s;
+
+	i = -1;
+	s = get_malloc(ft_strlen(str) + 2);
+	while (str[++i])
+		s[i] = str[i];
+	s[i] = '\0';
+	s[++i] = '\0';
+	free(str);
+	return (s);
+}

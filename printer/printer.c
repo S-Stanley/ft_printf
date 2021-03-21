@@ -79,7 +79,6 @@ t_printer	manage_width(t_flag flag, char *s, t_res res)
 
 t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
-	t_proxy		proxy;
 	t_printer	printer;
 
 	flag.letter = str[res.i];
@@ -103,16 +102,29 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		printer.s = put_it_first(printer.s, "0x");
 	if (printer.flag.len != 0 && printer.flag.letter == 'c')
 	{
+		char	*tmp;
+
+		tmp = ft_strdup(s);
+		while (flag.width-- > 0)
+		{
+			printer.res.str = ft_joinchar2(printer.res.str, ' ');
+			printer.res.max++;			
+		}
+		if (tmp[0] == '\0' && tmp[1] == '\0')
+		{
+			printer.res.str = ft_joinchar_null(printer.res.str);
+			printer.res.max++;
+		}
 		free(printer.s);
-		proxy = deal_with_c(printer.flag, printer.res, str);
-		printer.flag = proxy.flag;
-		printer.res = proxy.res;
+		printer.res.i++;
 	}
 	else
 	{
 		printer.res.str = ft_join2(printer.res.str, printer.s);
 		printer.res.i++;
 	}
+	if (flag.letter != 'c')
+		printer.res.max = printer.res.max + ft_strlen(printer.res.str);
 	return (printer);
 }
 

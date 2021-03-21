@@ -12,17 +12,16 @@
 
 #include "../ft_printf.h"
 
-int			ft_putstr(char *str, t_flag flag)
+int			ft_putstr(char *str, t_flag flag, int max)
 {
 	int	i;
-	int	size;
+	(void)flag;
 
 	i = -1;
-	while (str[++i])
+	while (++i < max)
 		write(1, &str[i], 1);
-	size = ft_strlen(str);
 	free(str);
-	return (size + flag.count);
+	return (max);
 }
 
 char		*ft_joinchar2(char *str, char c)

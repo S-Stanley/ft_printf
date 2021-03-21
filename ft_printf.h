@@ -21,6 +21,7 @@
 typedef struct	s_res {
 	int		i;
 	char	*str;
+	int		max;
 }				t_res;
 
 typedef struct	s_flag {
@@ -72,7 +73,7 @@ int				ft_printf(const char *str, ...);
 t_proxy			ft_proxy(char *str, t_res res, va_list data, t_flag flag);
 t_jchar			ft_joinchar(char *str, char c, int si);
 int				ft_strlen(char *str);
-int				ft_putstr(char *str, t_flag flag);
+int				ft_putstr(char *str, t_flag flag, int max);
 char			*ft_strdup(char *str);
 t_gvalue		get_value(char c, va_list data, t_flag flag);
 char			*ft_join(char *s1, char *s2);
@@ -130,5 +131,6 @@ char			*add_left_pos2(int size_min, char *s, char sep, int size);
 char			*add_left_neg2(int size_min, int size, char sep, char *s);
 char			*add_left_n_else2(char *s, int size, char sep, int minus);
 char			*ft_make_it_neg(char *s);
+char			*ft_joinchar_null(char *str);
 
 #endif
