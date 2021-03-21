@@ -4,5 +4,6 @@
 int main(void)
 {
 	printf("%s %5c %5c", "Salut", '\0', '\0');
+	// printf("%5c", 'c');
 	return (0);
 }

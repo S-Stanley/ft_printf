@@ -85,8 +85,6 @@ char		*ft_joinchar_null(char *str, int max)
 		s[i] = str[i];
 		i++;
 	}
-	s[i] = '\0';
-	s[++i] = '\0';
 	free(str);
 	return (s);
 }
@@ -100,13 +98,12 @@ char		*ft_joinchar_pass_null(char *str, char c, int max)
 	i = 0;
 	s = get_malloc(ft_strlen(str) + 2);
 	tmp = max;
-	while (--tmp > 0)
+	while (--tmp >= 0)
 	{
 		s[i] = str[i];
 		i++;
 	}
 	s[i] = c;
-	s[++i] = '\0';
 	free(str);
 	return (s);
 }
