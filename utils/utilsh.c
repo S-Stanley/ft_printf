@@ -50,7 +50,8 @@ char	*ft_make_it_neg(char *s)
 	s2 = malloc(sizeof(char) * (ft_strlen(s) + 2));
 	i = 0;
 	x = 0;
-	s2[x++] = '-';
+	s2[x] = '-';
+	x++;
 	while (s[i])
 	{
 		s2[x] = s[i];

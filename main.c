@@ -3,7 +3,16 @@
 
 int main(void)
 {
-	printf("|%d", ft_printf("%.4d", -424242));
-	//printf("%d", ft_printf("{%3c}", 0));
+	// char *p = NULL;
+	// printf("|%d", printf("-->|%-16.p|<--\n", p));
+	// // printf("|%d", ft_printf("-->|%-16.p|<--\n", p));
+	// //printf("%d", ft_printf("{%3c}", 0));
+	// return (0);
+
+	char	*str = "Hello";
+	char	*p = str;
+	
+	p = NULL;
+	ft_printf("-->|%-15p|<--\n", p);
 	return (0);
 }

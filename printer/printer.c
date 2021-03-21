@@ -83,13 +83,22 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	t_printer	printer;
 
 	flag.letter = str[res.i];
-	if (flag.letter == 'p' && flag.precis != 0)
+	if (flag.letter == 'p' && flag.precis != 0 && flag.isprecision == 1)
 		flag.precis = flag.precis + 2;
+	if (flag.letter == 'p' && !s)
+	{
+		free(s);
+		if (flag.ispts)
+			s = ft_strdup("0x");
+		else
+			s = ft_strdup("0x0");
+	}
+
 	printer = manage_precis(flag, s, str, res);
 	printer = manage_width(printer.flag, printer.s, printer.res);
 	flag = printer.flag;
 	res = printer.res;
-	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
+	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x") && !flag.neg && !flag.dash)
 		printer.s = put_it_first(printer.s, "0x");
 	if (printer.flag.len != 0 && printer.flag.letter == 'c')
 	{
@@ -115,6 +124,8 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
 	flag = gvalue.flag;
+	if (str[res.i] == 'p' && !gvalue.str)
+		return (printer_proxy(flag, str, gvalue.str, res));
 	printer = return_it_now(flag, str, gvalue.str, res);
 	if (printer.result)
 	{

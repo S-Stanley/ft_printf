@@ -101,7 +101,10 @@ t_flag		get_width(char *str, t_res res, va_list data, t_flag flag)
 		res.i++;
 	}
 	if (str[res.i] == '*')
+	{
+		flag.dash = 1;
 		return (get_width_star(flag, res, data));
+	}
 	else
 	{
 		while (str[res.i] >= '0' && str[res.i] <= '9')

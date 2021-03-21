@@ -36,6 +36,8 @@ typedef struct	s_flag {
 	int		neg;
 	char	flag;
 	int		count;
+	int		dash;
+	int		ispts;
 }				t_flag;
 
 typedef struct	s_proxy {

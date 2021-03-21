@@ -15,16 +15,18 @@
 t_flag		ft_get_preci(char *str, t_res res, va_list data, t_flag flag)
 {
 	res.i++;
-	flag.isprecision = 1;
+	flag.ispts = 1;
 	if (str[res.i] == '*')
 	{
 		flag.precis = va_arg(data, int);
 		res.i++;
+		flag.isprecision = 1;
 	}
 	else
 	{
 		while (str[res.i] >= '0' && str[res.i] <= '9')
 		{
+			flag.isprecision = 1;
 			flag.precis = (flag.precis * 10) + (str[res.i] - 48);
 			res.i++;
 		}

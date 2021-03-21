@@ -44,6 +44,8 @@ t_flag		init_flags(void)
 	flag.neg = 0;
 	flag.flag = 0;
 	flag.count = 0;
+	flag.dash = 0;
+	flag.ispts = 0;
 	return (flag);
 }
 
@@ -61,6 +63,8 @@ t_flag		re_init_flags(t_flag ex)
 	flag.neg = 0;
 	flag.flag = 0;
 	flag.count = ex.count;
+	flag.dash = 0;
+	flag.ispts = 0;
 	return (flag);
 }
 
