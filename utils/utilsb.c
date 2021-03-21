@@ -60,11 +60,6 @@ char		*ft_itoa_hexa_min(int nbr)
 	if (nb == 0)
 		return (ft_strdup("0"));
 	minus = 0;
-	if (nb < 0)
-	{
-		nb = (unsigned int)-nb;
-		minus = 1;
-	}
 	s = give_s_of_itoa_hexa(nb, 32);
 	if (minus)
 		s = ft_join(ft_strdup("-"), s);
@@ -81,11 +76,6 @@ char		*ft_itoa_hexa_maj(int nbr)
 	if (nb == 0)
 		return (ft_strdup("0"));
 	minus = 0;
-	if (nb < 0)
-	{
-		nb = -nb;
-		minus = 1;
-	}
 	s = give_s_of_itoa_hexa(nb, 0);
 	if (minus)
 		s = ft_join(ft_strdup("-"), s);
