@@ -131,6 +131,7 @@ char			*add_left_pos2(int size_min, char *s, char sep, int size);
 char			*add_left_neg2(int size_min, int size, char sep, char *s);
 char			*add_left_n_else2(char *s, int size, char sep, int minus);
 char			*ft_make_it_neg(char *s);
-char			*ft_joinchar_null(char *str);
+char			*ft_joinchar_null(char *str, int max);
+char			*ft_joinchar_pass_null(char *str, char c, int max);
 
 #endif

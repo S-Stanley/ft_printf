@@ -105,14 +105,15 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		char	*tmp;
 
 		tmp = ft_strdup(s);
+		flag.width--;
 		while (flag.width-- > 0)
 		{
-			printer.res.str = ft_joinchar2(printer.res.str, ' ');
-			printer.res.max++;			
+			printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max);
+			printer.res.max++;
 		}
 		if (tmp[0] == '\0' && tmp[1] == '\0')
 		{
-			printer.res.str = ft_joinchar_null(printer.res.str);
+			printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
 			printer.res.max++;
 		}
 		free(printer.s);
