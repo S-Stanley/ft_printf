@@ -24,6 +24,33 @@ int		ft_intlen(int nb)
 	}
 	return (i);
 }
+char	*ft_join3(char *s1, char *s2)
+{
+	int		i;
+	int		x;
+	char	*s;
+
+	i = 0;
+	x = 0;
+	s = get_malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!s)
+		return (NULL);
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	while (s2[x])
+	{
+		s[i] = s2[x];
+		x++;
+		i++;
+	}
+	s[i] = '\0';
+	// free(s1);
+	// free(s2);
+	return (s);
+}
 
 char	*ft_itoa(int nb)
 {
@@ -44,7 +71,7 @@ char	*ft_itoa(int nb)
 	}
 	s = give_s_itoa(nb);
 	if (minus)
-		s = ft_join(ft_strdup("-"), s);
+		return (ft_join3(ft_strdup("-"), s));
 	return (s);
 }
 

@@ -110,7 +110,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 {
 	t_gvalue	gvalue;
 	t_printer	printer;
-
+	
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);

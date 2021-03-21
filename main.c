@@ -3,6 +3,7 @@
 
 int main(void)
 {
-	ft_printf("ultimate2 %*d %*s %*x %*X %*i %*u\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 10000, -55, 1, -60);
+	printf("|%d", ft_printf("%4.15d", -42));
+	//printf("%d", ft_printf("{%3c}", 0));
 	return (0);
 }
