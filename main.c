@@ -9,10 +9,8 @@ int main(void)
 	// //printf("%d", ft_printf("{%3c}", 0));
 	// return (0);
 
-	char	*str = "Hello";
-	char	*p = str;
 	
-	p = NULL;
-	ft_printf("-->|%-15p|<--\n", p);
+	char *s = "Salut";
+	ft_printf("-->|%-16.s|<--\n", s);
 	return (0);
 }

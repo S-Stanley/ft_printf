@@ -93,7 +93,8 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		else
 			s = ft_strdup("0x0");
 	}
-
+	if (flag.letter != 'p' && flag.ispts == 1)
+		flag.isprecision = 1;
 	printer = manage_precis(flag, s, str, res);
 	printer = manage_width(printer.flag, printer.s, printer.res);
 	flag = printer.flag;
