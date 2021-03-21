@@ -10,7 +10,7 @@ int main(void)
 	// return (0);
 
 	
-	char *s = "Salut";
-	ft_printf("-->|%-16.s|<--\n", s);
+	// char *s = "Salut";
+	// ft_printf("-->|%-16.s|<--\n", s);
 	return (0);
 }

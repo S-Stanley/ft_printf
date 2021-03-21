@@ -46,8 +46,7 @@ char	*ft_make_it_neg(char *s)
 	int		i;
 	int		x;
 
-	s2 = NULL;
-	s2 = malloc(sizeof(char) * (ft_strlen(s) + 2));
+	s2 = get_malloc(ft_strlen(s) + 2);
 	i = 0;
 	x = 0;
 	s2[x] = '-';
@@ -58,6 +57,7 @@ char	*ft_make_it_neg(char *s)
 		x++;
 		i++;
 	}
+	s2[x] = '\0';
 	free(s);
 	return (s2);
 }
