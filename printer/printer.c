@@ -77,6 +77,32 @@ t_printer	manage_width(t_flag flag, char *s, t_res res)
 	return (printer);
 }
 
+char		*ft_join_pass_null(char *s1, char *s2, int max, int max2)
+{
+	int		i;
+	int		x;
+	char	*s;
+
+	i = 0;
+	x = 0;
+	s = get_malloc(max + ft_strlen(s2) + 1);
+	while (max-- > 0)
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	while (s2[x] && x < max2)
+	{
+		s[i] = s2[x];
+		x++;
+		i++;
+	}
+	s[i] = '\0';
+	free(s1);
+	free(s2);
+	return (s);
+}
+
 t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
 	t_printer	printer;
@@ -106,17 +132,30 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		
 		tmp = ft_strdup(printer.s);
 		flag.width--;
-		while (flag.width-- > 0)
+		if (!flag.neg)
 		{
-			printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max, flag.count_null);
-			printer.res.max++;
+			while (flag.width-- > 0)
+			{
+				printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max, flag.count_null);
+				printer.res.max++;
+			}
+			if (tmp[0] == '\0' && tmp[1] == '\0')
+			{
+				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+				printer.res.max++;
+			}
+			free(tmp);
 		}
-		if (tmp[0] == '\0' && tmp[1] == '\0')
+		if (flag.neg)
 		{
-			printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+			int		count;
+
+			count = ft_strlen(tmp) -1 -1;
+			printer.res.str = ft_joinchar2(printer.res.str, '\0');
 			printer.res.max++;
+			printer.res.str = ft_join_pass_null(printer.res.str, tmp, printer.res.max, ft_strlen(tmp) - 1);
+			printer.res.max = printer.res.max + count;
 		}
-		free(tmp);
 		free(printer.s);
 		printer.res.max++;
 		printer.res.i++;
