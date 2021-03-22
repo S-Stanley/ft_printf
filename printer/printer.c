@@ -137,7 +137,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
-	if (gvalue.str[0] == '\0' && gvalue.str[1] == '\0')
+	if (gvalue.str && gvalue.str[0] == '\0' && gvalue.str[1] == '\0')
 		flag.null = 1;
 	flag = gvalue.flag;
 	if (str[res.i] == 'p' && !gvalue.str)
