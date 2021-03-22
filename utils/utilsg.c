@@ -90,14 +90,15 @@ char		*ft_joinchar_null(char *str, int max)
 	return (s);
 }
 
-char		*ft_joinchar_pass_null(char *str, char c, int max)
+char		*ft_joinchar_pass_null(char *str, char c, int max, int add)
 {
 	int		i;
 	char	*s;
 
 	i = 0;
 	s = get_malloc(ft_strlen(str) + 2);
-	while (--max > 0)
+	max = max + add -1;
+	while (--max >= 0)
 	{
 		s[i] = str[i];
 		i++;

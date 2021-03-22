@@ -40,6 +40,7 @@ typedef struct	s_flag {
 	int		dash;
 	int		ispts;
 	int		null;
+	int		count_null;
 }				t_flag;
 
 typedef struct	s_proxy {
@@ -133,6 +134,6 @@ char			*add_left_neg2(int size_min, int size, char sep, char *s);
 char			*add_left_n_else2(char *s, int size, char sep, int minus);
 char			*ft_make_it_neg(char *s);
 char			*ft_joinchar_null(char *str, int max);
-char			*ft_joinchar_pass_null(char *str, char c, int max);
+char			*ft_joinchar_pass_null(char *str, char c, int max, int add);
 
 #endif
