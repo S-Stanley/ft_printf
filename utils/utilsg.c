@@ -94,12 +94,10 @@ char		*ft_joinchar_pass_null(char *str, char c, int max)
 {
 	int		i;
 	char	*s;
-	int		tmp;
 
 	i = 0;
 	s = get_malloc(ft_strlen(str) + 2);
-	tmp = max;
-	while (--tmp > 0)
+	while (--max > 0)
 	{
 		s[i] = str[i];
 		i++;

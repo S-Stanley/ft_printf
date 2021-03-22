@@ -118,6 +118,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		}
 		free(tmp);
 		free(printer.s);
+		printer.res.max++;
 		printer.res.i++;
 	}
 	else
