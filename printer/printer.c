@@ -103,8 +103,8 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	if (printer.flag.null)
 	{
 		char	*tmp;
-
-		tmp = ft_strdup(s);
+		
+		tmp = ft_strdup(printer.s);
 		flag.width--;
 		while (flag.width-- > 0)
 		{
@@ -116,6 +116,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 			printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
 			printer.res.max++;
 		}
+		free(tmp);
 		free(printer.s);
 		printer.res.i++;
 	}
@@ -137,9 +138,9 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
-	if (gvalue.str && gvalue.str[0] == '\0' && gvalue.str[1] == '\0')
-		flag.null = 1;
 	flag = gvalue.flag;
+	if (gvalue.str && gvalue.str[0] == '\0' && gvalue.str[1] == '\0' && str[res.i] == 'c')
+		flag.null = 1;
 	if (str[res.i] == 'p' && !gvalue.str)
 		return (printer_proxy(flag, str, gvalue.str, res));
 	printer = return_it_now(flag, str, gvalue.str, res);
