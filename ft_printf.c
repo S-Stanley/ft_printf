@@ -136,7 +136,7 @@ int			ft_printf(const char *str, ...)
 			prt = ft_lst_add_back(prt, res, flag);
 			free(res.str);
 			res.str = ft_strdup("");
-			// res.max = 0;
+			res.max = 0;
 		}
 	}
 	va_end(data);

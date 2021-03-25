@@ -135,14 +135,16 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		{
 			// free(printer.res.str);
 			printer.res.str = ft_strdup("");
-			while (flag.width-- > 0)
+			while (flag.width-- >= 0)
 			{
 				printer.res.str = ft_joinchar2(printer.res.str, ' ');
+				// printf("\n*%d|%s|%d*", flag.width, printer.res.str, printer.res.max);
 				// printer.res.str = ft_joinchar_pass_null(ft_strdup(""), ' ', printer.res.max, flag.count_null);
 				printer.res.max++;
 			}
 			if (printer.flag.null)
 			{
+				// printf("\n*%d|%s|%d*", flag.width, printer.res.str, printer.res.max);
 				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
 				printer.res.max++;
 			}
