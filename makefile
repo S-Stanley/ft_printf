@@ -11,6 +11,8 @@
 # **************************************************************************** #
 
 SRCS = ft_printf.c verif/verif.c services/service.c printer/printer.c utils/utilsa.c utils/utilsb.c utils/utilsc.c utils/utilsd.c utils/utilse.c utils/utilsf.c utils/utilsg.c utils/utilsh.c printer/printerb.c services/serviceb.c services/servicec.c
+DIR = compiled
+# OBJS = $(addprefix $(DIR)/, $(SRCS:.c=.o))
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
@@ -21,7 +23,7 @@ RM = rm -f
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME)  $(OBJS)
 
 all:
 	$(NAME)

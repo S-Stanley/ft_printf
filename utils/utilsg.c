@@ -85,6 +85,7 @@ char		*ft_joinchar_null(char *str, int max)
 		s[i] = str[i];
 		i++;
 	}
+	s[i] = '\0';
 	free(str);
 	return (s);
 }

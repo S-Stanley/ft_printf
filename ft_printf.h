@@ -40,6 +40,7 @@ typedef struct	s_flag {
 	int		dash;
 	int		ispts;
 	int		null;
+	int		count_null;
 }				t_flag;
 
 typedef struct	s_proxy {
