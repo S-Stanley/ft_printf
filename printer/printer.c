@@ -145,7 +145,15 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 			if (printer.flag.null)
 			{
 				// printf("\n*%d|%s|%d*", flag.width, printer.res.str, printer.res.max);
-				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+				if (ft_strcmp("", printer.res.str))
+				{
+					printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+				}
+				else
+				{
+					printer.res.str = ft_joinchar2(printer.res.str, '\0');
+					printer.res.max++;
+				}
 				printer.res.max++;
 			}
 			free(tmp);
