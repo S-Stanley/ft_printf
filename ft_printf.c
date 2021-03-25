@@ -93,7 +93,7 @@ int 		ft_read_lst(t_x *res)
 	{
 		tmp = res->next;
 		if (res->special)
-			count = weird_print(res->s, res->i);
+			count = count + weird_print(res->s, res->i);
 		else
 			count = count + ft_putstrlen(res->s);
 		// printf("%s\n", res->s);
@@ -125,6 +125,7 @@ int			ft_printf(const char *str, ...)
 			render = ft_proxy((char *)str, res, data, flag);
 			prt = ft_lst_add_back(prt, render.res, render.flag);
 			res = render.res;
+			res.max = 1;
 			flag = render.flag;
 		}
 		else
@@ -135,6 +136,7 @@ int			ft_printf(const char *str, ...)
 			prt = ft_lst_add_back(prt, res, flag);
 			free(res.str);
 			res.str = ft_strdup("");
+			// res.max = 0;
 		}
 	}
 	va_end(data);
