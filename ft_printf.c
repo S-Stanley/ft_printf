@@ -41,6 +41,70 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	return (render);
 }
 
+t_x			*ft_lst_add_back(t_x *old, t_res res, t_flag flag)
+{
+	t_x		*new;
+	t_x		*tmp;
+
+	new = malloc(sizeof(t_x));
+	new->s = ft_strdup(res.str);
+	new->i = res.max;
+	new->special = flag.null;
+	new->next = NULL;
+	if (!old)
+		return (new);
+	tmp = old;
+	while (old->next)
+		old = old->next;
+	old->next = new;
+	return (tmp);
+}
+
+int			ft_putstrlen(char *str)
+{
+	int		i;
+
+	i = -1;
+	while (str[++i])
+		write(1, &str[i], 1);
+	return(i);
+}
+
+int			weird_print(char *str, int max)
+{
+	int		i;
+
+	i = 0;
+	while (max-- > 1)
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+int 		ft_read_lst(t_x *res)
+{
+	t_x		*tmp;
+	int		count;
+
+	count = 0;
+	while (res)
+	{
+		tmp = res->next;
+		if (res->special)
+			count = weird_print(res->s, res->i);
+		else
+			count = count + ft_putstrlen(res->s);
+		// printf("%s\n", res->s);
+		// free(res->s);
+		// free(res);
+		// res = res->next;
+		res = tmp;
+	}
+	return (count);
+}
+
 int			ft_printf(const char *str, ...)
 {
 	va_list	data;
@@ -59,16 +123,21 @@ int			ft_printf(const char *str, ...)
 		{
 			flag = re_init_flags(flag);
 			render = ft_proxy((char *)str, res, data, flag);
+			prt = ft_lst_add_back(prt, render.res, render.flag);
 			res = render.res;
 			flag = render.flag;
 		}
 		else
 		{
-			res.str = ft_joinchar2(res.str, str[res.i]);
+			res.str = ft_joinchar2(ft_strdup(""), str[res.i]);
 			res.i++;
 			res.max++;
+			prt = ft_lst_add_back(prt, res, flag);
+			free(res.str);
+			res.str = ft_strdup("");
 		}
 	}
 	va_end(data);
-	return (ft_putstr(res.str, flag, res.max));
+	return (ft_read_lst(prt));
+	// return (ft_putstr(res.str, flag, res.max));
 }

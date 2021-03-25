@@ -21,6 +21,7 @@
 typedef struct	s_x {
 	int			i;
 	char		*s;
+	int			special;
 	struct s_x	*next;
 }				t_x;
 typedef struct	s_res {

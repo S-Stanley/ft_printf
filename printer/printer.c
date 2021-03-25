@@ -129,14 +129,13 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	if (printer.flag.null)
 	{
 		char	*tmp;
-		
 		tmp = ft_strdup(printer.s);
 		flag.width--;
 		if (!flag.neg)
 		{
 			while (flag.width-- > 0)
 			{
-				printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max, flag.count_null);
+				printer.res.str = ft_joinchar_pass_null(ft_strdup(""), ' ', printer.res.max, flag.count_null);
 				printer.res.max++;
 			}
 			if (tmp[0] == '\0' && tmp[1] == '\0')
@@ -157,12 +156,13 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 			printer.res.max = printer.res.max + count;
 		}
 		free(printer.s);
-		printer.res.max++;
+		// printer.res.max++;
 		printer.res.i++;
 	}
 	else
 	{
-		printer.res.str = ft_join2(printer.res.str, printer.s);
+		// printer.res.str = ft_join2(printer.res.str, printer.s);
+		printer.res.str = printer.s;
 		printer.res.i++;
 	}
 	if (!printer.flag.null)
