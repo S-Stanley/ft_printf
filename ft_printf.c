@@ -47,10 +47,12 @@ int			ft_printf(const char *str, ...)
 	t_res	res;
 	t_flag	flag;
 	t_proxy	render;
+	t_x		*prt;
 
 	va_start(data, str);
 	res = init_res();
 	flag = init_flags();
+	prt = NULL;
 	while (str[res.i])
 	{
 		if (str[res.i] == '%')

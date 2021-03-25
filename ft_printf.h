@@ -18,6 +18,11 @@
 # include <stdarg.h>
 # include <unistd.h>
 
+typedef struct	s_x {
+	int			i;
+	char		*s;
+	struct s_x	*next;
+}				t_x;
 typedef struct	s_res {
 	int		i;
 	char	*str;
