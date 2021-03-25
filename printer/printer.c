@@ -106,15 +106,72 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 
 		tmp = ft_strdup(s);
 		flag.width--;
-		while (flag.width-- > 0)
+		if (!flag.neg)
 		{
-			printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max);
-			printer.res.max++;
+			while (flag.width-- > 0)
+			{
+				printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max);
+				printer.res.max++;
+			}
+			if (printer.flag.null)
+			{
+				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+				printer.res.max++;
+			}
 		}
-		if (printer.flag.null)
+		else
 		{
-			printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
-			printer.res.max++;
+			char 	*to_res;
+			int		i;
+			int		count;
+			int		x;
+
+			to_res = get_malloc(flag.width + 2);
+			i = 0;
+			to_res[i] = '\0';
+			i++;
+			count = 0;
+			while (i <= flag.width)
+			{
+				to_res[i] = ' ';
+				i++;
+				count++;
+			}
+			count++;
+			to_res[i] = '\0';
+			
+			char	*new;
+
+			new = get_malloc(flag.width + 2 + printer.res.max + 1);
+			i = 0;
+			while (i < printer.res.max)
+			{
+				new[i] = printer.res.str[i];
+				i++;
+			}
+			printer.res.max = printer.res.max + count;
+			x = 0;
+			while (count-- > 0)
+			{
+				new[i] = to_res[i];
+				i++;
+				x++;
+			}
+			new[i] = '\0';
+			free(printer.res.str);
+			free(to_res);
+			printer.res.str = new;
+
+			// if (printer.flag.null)
+			// {
+			// 	printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+			// 	printer.res.max++;
+			// }
+			// while (flag.width-- > 0)
+			// {
+			// 	printer.res.str = ft_joinchar_pass_null(printer.res.str, ' ', printer.res.max);
+			// 	printer.res.max++;
+			// }
 		}
 		free(printer.s);
 		printer.res.i++;
@@ -138,7 +195,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
 	flag = gvalue.flag;
-	if (gvalue.str && gvalue.str[0] == '\0' && gvalue.str[1] == '\0' && str[res.i] == 'c')
+	if (gvalue.str && flag.letter == '\0' && str[res.i] == 'c')
 	{
 		flag.null = 1;
 		flag.count_null++;
