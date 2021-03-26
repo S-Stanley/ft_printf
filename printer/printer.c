@@ -204,6 +204,8 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
 	flag = gvalue.flag;
+	if (flag.precis == 0 && str[res.i] == 'c')
+		flag.precis = 1;
 	if (gvalue.str && gvalue.str[0] == '\0' && gvalue.str[1] == '\0' && str[res.i] == 'c')
 	{
 		flag.null = 1;
