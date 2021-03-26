@@ -73,12 +73,12 @@ char		*ft_strdup_and_free(char *str, char *to_free)
 	return (s);
 }
 
-char		*ft_joinchar_null(char *str, int max)
+char		*ft_joinchar_null(char *str, int max, int add)
 {
 	int		i;
 	char	*s;
 
-	i = -1;
+	i = -1 + add;
 	s = get_malloc(ft_strlen(str) + 2);
 	while (max-- > 0)
 	{

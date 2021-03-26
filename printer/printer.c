@@ -143,7 +143,10 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 			{
 				if (ft_strcmp("", printer.res.str))
 				{
-					printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+					if (flag.width == 2)
+						printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 1);
+					else
+						printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 0);
 				}
 				else
 				{
