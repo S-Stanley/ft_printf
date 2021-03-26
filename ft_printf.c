@@ -150,6 +150,7 @@ int			ft_printf(const char *str, ...)
 			render = ft_proxy((char *)str, res, data, flag);
 			prt = ft_lst_add_back(prt, render.res, render.flag);
 			res = render.res;
+			free(render.res.str);
 			res.max = 1;
 			flag = render.flag;
 		}
