@@ -159,13 +159,6 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		}
 		if (flag.neg)
 		{
-			// int		count;
-			// count = ft_strlen(tmp) -1 -1;
-			// printer.res.str = ft_joinchar2(printer.res.str, '\0');
-			// printer.res.max++;
-			// printer.res.str = ft_join_pass_null(printer.res.str, tmp, printer.res.max, ft_strlen(tmp) - 1);
-			// printer.res.max = printer.res.max + count;
-
 			char 	*str;
 			int		i;
 
@@ -189,7 +182,6 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	}
 	else
 	{
-		// printer.res.str = ft_join2(printer.res.str, printer.s);
 		printer.res.str = printer.s;
 		printer.res.i++;
 	}

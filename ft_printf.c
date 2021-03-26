@@ -122,10 +122,8 @@ int 		ft_read_lst(t_x *res)
 			count = count + weird_print(res->s, res->i);
 		else
 			count = count + ft_putstrlen(res->s);
-		// printf("%s\n", res->s);
-		// free(res->s);
-		// free(res);
-		// res = res->next;
+		free(res->s);
+		free(res);
 		res = tmp;
 	}
 	return (count);
@@ -169,5 +167,4 @@ int			ft_printf(const char *str, ...)
 	}
 	va_end(data);
 	return (ft_read_lst(prt));
-	// return (ft_putstr(res.str, flag, res.max));
 }
