@@ -157,6 +157,7 @@ int			ft_printf(const char *str, ...)
 			res.str = ft_joinchar2(ft_strdup(""), str[res.i]);
 			res.i++;
 			res.max++;
+			flag.null = 0;
 			prt = ft_lst_add_back(prt, res, flag);
 			free(res.str);
 			res.str = ft_strdup("");
