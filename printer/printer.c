@@ -174,6 +174,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 				printer.res.max++;
  			}
 			str[i] = '\0';
+			free(printer.res.str);
 			printer.res.str = str;
 			printer.res.max++;
 		}
