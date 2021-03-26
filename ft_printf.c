@@ -48,7 +48,7 @@ char		*ft_strdup_pass_null(char *str, int max)
 
 	i = 0;
 	s = get_malloc(max + 1);
-	while (max-- > 0)
+	while (max-- >= 0)
 	{
 		s[i] = str[i];
 		i++;
@@ -63,11 +63,11 @@ t_x			*ft_lst_add_back(t_x *old, t_res res, t_flag flag)
 	t_x		*tmp;
 
 	new = malloc(sizeof(t_x));
-	// if (flag.null)
-	// 	new->s = ft_strdup_pass_null(res.str, res.i);
-	// else
-	// 	new->s = ft_strdup(res.str);
-	new->s = ft_strdup(res.str);
+	if (flag.null && flag.letter == 'c' && flag.neg)
+		new->s = ft_strdup_pass_null(res.str, res.i);
+	else
+		new->s = ft_strdup(res.str);
+	// new->s = ft_strdup(res.str);
 	new->i = res.max;
 	new->special = flag.null;
 	new->next = NULL;
@@ -115,7 +115,7 @@ int 		ft_read_lst(t_x *res)
 	while (res)
 	{
 		tmp = res->next;
-		if (res->special)
+		if (res->special && ft_strcmp(res->s, " "))
 			count = count + weird_print(res->s, res->i);
 		else
 			count = count + ft_putstrlen(res->s);
@@ -142,6 +142,7 @@ int			ft_printf(const char *str, ...)
 	prt = NULL;
 	while (str[res.i])
 	{
+		
 		if (str[res.i] == '%')
 		{
 			flag = re_init_flags(flag);
