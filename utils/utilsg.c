@@ -78,11 +78,10 @@ char		*ft_joinchar_null(char *str, int max)
 	int		i;
 	char	*s;
 
-	i = -1;
+	i = 0;
 	s = get_malloc(ft_strlen(str) + 2);
 	while (max-- > 0)
 	{
-		// printf("*%d*", max);
 		s[i] = str[i];
 		i++;
 	}

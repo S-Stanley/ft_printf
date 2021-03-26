@@ -129,7 +129,17 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	if (printer.flag.null)
 	{
 		char	*tmp;
+		int		more;
+		int		remember;
+
+		more = 0;
+		remember = flag.width;
 		tmp = ft_strdup(printer.s);
+		if (flag.width == 2)
+		{
+			flag.width--;
+			more++;
+		}
 		flag.width--;
 		if (!flag.neg)
 		{
@@ -143,7 +153,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 			{
 				if (ft_strcmp("", printer.res.str))
 				{
-					printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max);
+					printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max + more);
 				}
 				else
 				{
@@ -153,16 +163,12 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 				printer.res.max++;
 			}
 			free(tmp);
+			flag.width = remember;
+			if (flag.width == 2)
+				printer.res.max++;
 		}
 		if (flag.neg)
 		{
-			// int		count;
-			// count = ft_strlen(tmp) -1 -1;
-			// printer.res.str = ft_joinchar2(printer.res.str, '\0');
-			// printer.res.max++;
-			// printer.res.str = ft_join_pass_null(printer.res.str, tmp, printer.res.max, ft_strlen(tmp) - 1);
-			// printer.res.max = printer.res.max + count;
-
 			char 	*str;
 			int		i;
 

@@ -65,9 +65,12 @@ t_x			*ft_lst_add_back(t_x *old, t_res res, t_flag flag)
 	new = malloc(sizeof(t_x));
 	if (flag.null && flag.letter == 'c' && flag.neg)
 		new->s = ft_strdup_pass_null(res.str, res.i);
+	else if (flag.null && flag.letter == 'c' && flag.width == 2)
+	{
+		new->s = ft_strdup_pass_null(res.str, res.i);
+	}
 	else
 		new->s = ft_strdup(res.str);
-	// new->s = ft_strdup(res.str);
 	new->i = res.max;
 	new->special = flag.null;
 	new->next = NULL;
@@ -115,10 +118,15 @@ int 		ft_read_lst(t_x *res)
 	while (res)
 	{
 		tmp = res->next;
-		if (res->special && ft_strcmp(res->s, " "))
+		// if (res->special && !ft_strcmp(res->s, " "))
+		if (res->special && !ft_strcmp(res->s, " "))
+		{
 			count = count + weird_print(res->s, res->i);
+		}
 		else
+		{
 			count = count + ft_putstrlen(res->s);
+		}
 		// printf("%s\n", res->s);
 		// free(res->s);
 		// free(res);
