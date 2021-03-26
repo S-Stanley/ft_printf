@@ -35,7 +35,7 @@ t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 {
 	t_printer	printer;
 
-	if (flag.isprecision && flag.letter != 'c')
+	if (flag.isprecision && flag.letter != 'c' && flag.letter != '%')
 	{
 		if (str[res.i] == 's' || str[res.i] == 'c' || str[res.i] == '%')
 			s = ft_strndup(s, flag.precis);
