@@ -155,7 +155,6 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 				}
 				printer.res.max++;
 			}
-			free(tmp);
 		}
 		if (flag.neg)
 		{
@@ -178,6 +177,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 			printer.res.max++;
 		}
 		free(printer.s);
+		free(tmp);
 		printer.res.i++;
 	}
 	else
