@@ -12,6 +12,6 @@ int main(void)
 	// printf("|%d", ft_printf("%5c", 0));
 
 
-	printf("|%d", ft_printf("{%*c}", 0, 0));
+	printf("|%d", ft_printf("%p" ,(void*)9888845855039847185lu));
 	return (0);
 }

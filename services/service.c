@@ -85,6 +85,7 @@ t_flag		get_width_star(t_flag flag, t_res res, va_list data)
 		nb = -nb;
 		flag.right = 1;
 		flag.sep = ' ';
+		flag.neg = 1;
 	}
 	flag.width = nb;
 	res.i++;

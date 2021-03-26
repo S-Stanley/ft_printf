@@ -41,12 +41,32 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	return (render);
 }
 
+char		*ft_strdup_pass_null(char *str, int max)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	s = get_malloc(max + 1);
+	while (max-- > 0)
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
 t_x			*ft_lst_add_back(t_x *old, t_res res, t_flag flag)
 {
 	t_x		*new;
 	t_x		*tmp;
 
 	new = malloc(sizeof(t_x));
+	// if (flag.null)
+	// 	new->s = ft_strdup_pass_null(res.str, res.i);
+	// else
+	// 	new->s = ft_strdup(res.str);
 	new->s = ft_strdup(res.str);
 	new->i = res.max;
 	new->special = flag.null;
@@ -77,7 +97,10 @@ int			weird_print(char *str, int max)
 	i = 0;
 	while (max-- > 1)
 	{
-		write(1, &str[i], 1);
+		if (str[i] == '\0')
+			write(1, "\0", 1);
+		else
+			write(1, &str[i], 1);
 		i++;
 	}
 	return (i);

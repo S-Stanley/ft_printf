@@ -72,13 +72,17 @@ char	*str_that_address(unsigned long long n)
 
 	if (!n)
 		return (NULL);
-	i = -1;
+	i = 0;
 	if (n == 0 || n == 1)
 		return (address_exception(n));
 	container = 16;
-	str = get_malloc(ft_intlen(n) + 3);
 	while (n / container >= 16)
+	{
+		i++;
 		container = container * 16;
+	}
+	str = get_malloc(i + 100);
+	i = -1;
 	while (container > 0)
 	{
 		tmp = n / container + '0';

@@ -160,13 +160,29 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		}
 		if (flag.neg)
 		{
-			int		count;
+			// int		count;
+			// count = ft_strlen(tmp) -1 -1;
+			// printer.res.str = ft_joinchar2(printer.res.str, '\0');
+			// printer.res.max++;
+			// printer.res.str = ft_join_pass_null(printer.res.str, tmp, printer.res.max, ft_strlen(tmp) - 1);
+			// printer.res.max = printer.res.max + count;
 
-			count = ft_strlen(tmp) -1 -1;
-			printer.res.str = ft_joinchar2(printer.res.str, '\0');
+			char 	*str;
+			int		i;
+
+			i = 0;
+			str = get_malloc(flag.width + 2);
+			str[i] = '\0';
+			i++;
 			printer.res.max++;
-			printer.res.str = ft_join_pass_null(printer.res.str, tmp, printer.res.max, ft_strlen(tmp) - 1);
-			printer.res.max = printer.res.max + count;
+			while (flag.width-- > 0)
+			{
+				str[i] = ' ';
+				i++;
+				printer.res.max++;
+ 			}
+			str[i] = '\0';
+			printer.res.str = str;
 		}
 		free(printer.s);
 		// printer.res.max++;
