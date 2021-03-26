@@ -70,10 +70,10 @@ t_x			*ft_lst_add_back(t_x *old, t_res res, t_flag flag)
 	else if (flag.null && flag.letter == 'c' && flag.width == 2)
 	{
 		new->s = ft_strdup_pass_null(res.str, res.i);
-		free(res.str);
 	}
 	else
 		new->s = ft_strdup(res.str);
+	free(res.str);
 	new->i = res.max;
 	new->special = flag.null;
 	new->next = NULL;
@@ -153,7 +153,7 @@ int			ft_printf(const char *str, ...)
 			render = ft_proxy((char *)str, res, data, flag);
 			prt = ft_lst_add_back(prt, render.res, render.flag);
 			res = render.res;
-			free(render.res.str);
+			// free(render.res.str);
 			res.max = 1;
 			flag = render.flag;
 		}
@@ -164,7 +164,7 @@ int			ft_printf(const char *str, ...)
 			res.max++;
 			flag.null = 0;
 			prt = ft_lst_add_back(prt, res, flag);
-			free(res.str);
+			// free(res.str);
 			res.str = ft_strdup("");
 			res.max = 0;
 		}

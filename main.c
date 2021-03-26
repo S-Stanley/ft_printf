@@ -15,6 +15,7 @@ int main(void)
 	// printf("|%d", ft_printf("-->|%-3c|<--\n", '\0'));
 	// printf("|%d", ft_printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0));
 	// printf("|%d", ft_printf("-->|%*.c|<--\n", 2, '\0'));
+	ft_printf("%c", 'a');
 
 	return (0);
 }
