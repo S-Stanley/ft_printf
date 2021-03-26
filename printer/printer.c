@@ -133,6 +133,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		flag.width--;
 		if (!flag.neg)
 		{
+			free(printer.res.str);
 			printer.res.str = ft_strdup("");
 			while (flag.width-- >= 0)
 			{
