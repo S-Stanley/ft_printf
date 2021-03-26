@@ -64,10 +64,13 @@ t_x			*ft_lst_add_back(t_x *old, t_res res, t_flag flag)
 
 	new = malloc(sizeof(t_x));
 	if (flag.null && flag.letter == 'c' && flag.neg)
+	{
 		new->s = ft_strdup_pass_null(res.str, res.i);
+	}
 	else if (flag.null && flag.letter == 'c' && flag.width == 2)
 	{
 		new->s = ft_strdup_pass_null(res.str, res.i);
+		free(res.str);
 	}
 	else
 		new->s = ft_strdup(res.str);

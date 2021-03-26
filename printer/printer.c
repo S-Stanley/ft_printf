@@ -128,7 +128,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x") && !flag.neg && !flag.dash)
 		printer.s = put_it_first(printer.s, "0x");
 	if (printer.flag.null)
-	{		
+	{
 		tmp = ft_strdup(printer.s);
 		flag.width--;
 		if (!flag.neg)
