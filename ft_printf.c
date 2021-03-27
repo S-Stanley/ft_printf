@@ -146,7 +146,6 @@ int			ft_printf(const char *str, ...)
 	prt = NULL;
 	while (str[res.i])
 	{
-		
 		if (str[res.i] == '%')
 		{
 			res.str = ft_strdup("");
@@ -154,7 +153,6 @@ int			ft_printf(const char *str, ...)
 			render = ft_proxy((char *)str, res, data, flag);
 			prt = ft_lst_add_back(prt, render.res, render.flag);
 			res = render.res;
-			// free(render.res.str);
 			res.max = 1;
 			flag = render.flag;
 		}
@@ -165,7 +163,6 @@ int			ft_printf(const char *str, ...)
 			res.max++;
 			flag.null = 0;
 			prt = ft_lst_add_back(prt, res, flag);
-			// free(res.str);
 			res.max = 0;
 		}
 	}

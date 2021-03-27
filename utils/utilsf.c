@@ -17,7 +17,7 @@ t_res	init_res(void)
 	t_res	res;
 
 	res.i = 0;
-	res.str = ft_strdup("");
+	res.str = NULL;
 	res.max = 0;
 	return (res);
 }
