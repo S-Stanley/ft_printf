@@ -15,8 +15,8 @@
 int			ft_putstr(char *str, t_flag flag, int max)
 {
 	int	i;
-	(void)flag;
 
+	(void)flag;
 	i = -1;
 	while (++i < max)
 		write(1, &str[i], 1);

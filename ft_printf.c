@@ -93,7 +93,7 @@ int			ft_putstrlen(char *str)
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
-	return(i);
+	return (i);
 }
 
 int			weird_print(char *str, int max)
@@ -112,7 +112,7 @@ int			weird_print(char *str, int max)
 	return (i);
 }
 
-int 		ft_read_lst(t_x *res)
+int			ft_read_lst(t_x *res)
 {
 	t_x		*tmp;
 	int		count;

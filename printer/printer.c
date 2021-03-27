@@ -107,7 +107,7 @@ char		*ft_join_pass_null(char *s1, char *s2, int max, int max2)
 t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
 	t_printer	printer;
-	char	*tmp;
+	char		*tmp;
 
 	flag.letter = str[res.i];
 	if (flag.letter == 'p' && flag.precis != 0 && flag.isprecision == 1)
@@ -160,7 +160,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 		}
 		if (flag.neg)
 		{
-			char 	*str;
+			char	*str;
 			int		i;
 
 			i = 0;
@@ -197,7 +197,7 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 {
 	t_gvalue	gvalue;
 	t_printer	printer;
-	
+
 	if (str[res.i] == '.' && flag.precis == 0)
 		res.i++;
 	gvalue = get_value(str[res.i], data, flag);
