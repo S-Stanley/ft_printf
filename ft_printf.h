@@ -18,9 +18,9 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-typedef struct 	s_container {
+typedef struct	s_container {
 	int				i;
- 	long int	container;
+ 	long int		container;
 }				t_container;
 
 typedef struct	s_x {

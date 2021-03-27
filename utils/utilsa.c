@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int		ft_isnum(char c)
+int				ft_isnum(char c)
 {
 	if (c == 'd' || c == 'i')
 		return (1);
@@ -23,7 +23,7 @@ int		ft_isnum(char c)
 	return (0);
 }
 
-int		check_ingredients(char c, char *str)
+int				check_ingredients(char c, char *str)
 {
 	int		i;
 
@@ -36,7 +36,7 @@ int		check_ingredients(char c, char *str)
 	return (0);
 }
 
-int		ft_count_hexa(int nb)
+int				ft_count_hexa(int nb)
 {
 	int	i;
 
@@ -63,7 +63,7 @@ t_container		get_container_value(unsigned long long n)
 	return (res);
 }
 
-char	*str_that_address(unsigned long long n)
+char			*str_that_address(unsigned long long n)
 {
 	char				tmp;
 	char				*str;
