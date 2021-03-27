@@ -22,6 +22,7 @@ t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res)
 		{
 			res.i++;
 			printer.flag = flag;
+			res.str = ft_strdup("");
 			printer.res = res;
 			printer.result = 1;
 			return (printer);

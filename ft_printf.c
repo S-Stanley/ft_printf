@@ -148,7 +148,7 @@ int			ft_printf(const char *str, ...)
 	{
 		if (str[res.i] == '%')
 		{
-			res.str = ft_strdup("");
+			res.str = NULL;
 			flag = re_init_flags(flag);
 			render = ft_proxy((char *)str, res, data, flag);
 			prt = ft_lst_add_back(prt, render.res, render.flag);
