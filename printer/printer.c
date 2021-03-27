@@ -12,26 +12,6 @@
 
 #include "../ft_printf.h"
 
-t_printer	return_it_now(t_flag flag, char *str, char *s, t_res res)
-{
-	t_printer	printer;
-
-	if (ft_atoi(s) == 0 && flag.precis == 0 && flag.width == 0)
-	{
-		if (str[res.i - 1] == '.' || str[res.i - 2] == '.')
-		{
-			res.i++;
-			printer.flag = flag;
-			res.str = ft_strdup("");
-			printer.res = res;
-			printer.result = 1;
-			return (printer);
-		}
-	}
-	printer.result = 0;
-	return (printer);
-}
-
 t_printer	manage_precis(t_flag flag, char *s, char *str, t_res res)
 {
 	t_printer	printer;

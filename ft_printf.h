@@ -141,5 +141,7 @@ char			*add_left_n_else2(char *s, int size, char sep, int minus);
 char			*ft_make_it_neg(char *s);
 char			*ft_joinchar_null(char *str, int max, int add);
 char			*ft_joinchar_pass_null(char *str, char c, int max, int add);
+t_x				*ft_lst_add_back(t_x *old, t_res res, t_flag flag);
+int				ft_read_lst(t_x *res);
 
 #endif
