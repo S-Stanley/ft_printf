@@ -18,6 +18,11 @@
 # include <stdarg.h>
 # include <unistd.h>
 
+typedef struct 	s_container {
+	int				i;
+ 	long int	container;
+}				t_container;
+
 typedef struct	s_x {
 	int			i;
 	char		*s;
@@ -143,5 +148,6 @@ char			*ft_joinchar_null(char *str, int max, int add);
 char			*ft_joinchar_pass_null(char *str, char c, int max, int add);
 t_x				*ft_lst_add_back(t_x *old, t_res res, t_flag flag);
 int				ft_read_lst(t_x *res);
+t_container		get_container_value(unsigned long long n);
 
 #endif

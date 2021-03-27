@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-char	*ft_join2(char *s1, char *s2)
+char		*ft_join2(char *s1, char *s2)
 {
 	int		i;
 	int		x;
@@ -40,7 +40,7 @@ char	*ft_join2(char *s1, char *s2)
 	return (s);
 }
 
-char	*ft_make_it_neg(char *s)
+char		*ft_make_it_neg(char *s)
 {
 	char	*s2;
 	int		i;

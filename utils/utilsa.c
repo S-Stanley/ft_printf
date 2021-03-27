@@ -36,20 +36,6 @@ int		check_ingredients(char c, char *str)
 	return (0);
 }
 
-int		ft_strcmp(char *s1, char *s2)
-{
-	int		i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
-
 int		ft_count_hexa(int nb)
 {
 	int	i;
@@ -63,36 +49,43 @@ int		ft_count_hexa(int nb)
 	return (i);
 }
 
+t_container		get_container_value(unsigned long long n)
+{
+	t_container		res;
+
+	res.container = 16;
+	res.i = 0;
+	while (n / res.container >= 16)
+	{
+		res.i++;
+		res.container = res.container * 16;
+	}
+	return (res);
+}
+
 char	*str_that_address(unsigned long long n)
 {
-	long int			container;
 	char				tmp;
 	char				*str;
-	int					i;
+	t_container			res;
 
 	if (!n)
 		return (NULL);
-	i = 0;
 	if (n == 0 || n == 1)
 		return (address_exception(n));
-	container = 16;
-	while (n / container >= 16)
+	res = get_container_value(n);
+	str = get_malloc(res.i + 100);
+	res.i = -1;
+	while (res.container > 0)
 	{
-		i++;
-		container = container * 16;
-	}
-	str = get_malloc(i + 100);
-	i = -1;
-	while (container > 0)
-	{
-		tmp = n / container + '0';
+		tmp = n / res.container + '0';
 		if (tmp > '9')
-			str[++i] = tmp + 39;
+			str[++res.i] = tmp + 39;
 		else
-			str[++i] = tmp;
-		n = n % container;
-		container = container / 16;
+			str[++res.i] = tmp;
+		n = n % res.container;
+		res.container = res.container / 16;
 	}
-	str[++i] = '\0';
+	str[++res.i] = '\0';
 	return (ft_join(ft_strdup("0x"), str));
 }
