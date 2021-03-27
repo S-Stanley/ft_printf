@@ -12,85 +12,112 @@
 
 #include "../ft_printf.h"
 
+t_printer	manage_c_pos(t_printer printer, t_flag flag)
+{
+	free(printer.res.str);
+	printer.res.str = ft_strdup("");
+	while (flag.width-- >= 0)
+	{
+		printer.res.str = ft_joinchar2(printer.res.str, ' ');
+		printer.res.max++;
+	}
+	if (printer.flag.null)
+	{
+		if (ft_strcmp("", printer.res.str))
+		{
+			if (flag.width == 2)
+				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 1);
+			else
+				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 0);
+		}
+		else
+		{
+			printer.res.str = ft_joinchar2(printer.res.str, '\0');
+			printer.res.max++;
+		}
+		printer.res.max++;
+	}
+	return (printer);
+}
+
+t_printer	manage_c_neg(t_printer printer, t_flag flag)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = get_malloc(flag.width + 2);
+	str[i] = '\0';
+	i++;
+	printer.res.max++;
+	while (flag.width-- > 0)
+	{
+		str[i] = ' ';
+		i++;
+		printer.res.max++;
+	}
+	str[i] = '\0';
+	free(printer.res.str);
+	printer.res.str = str;
+	printer.res.max++;
+	return (printer);
+}
+
+t_printer	manage_c(t_printer printer, t_flag flag)
+{
+	char		*tmp;
+
+	tmp = ft_strdup(printer.s);
+	flag.width--;
+	if (!flag.neg)
+		printer = manage_c_pos(printer, flag);
+	if (flag.neg)
+		printer = manage_c_neg(printer, flag);
+	free(printer.s);
+	free(tmp);
+	printer.res.i++;
+	return (printer);
+}
+
+char		*manage_p_null(char *s, t_flag flag)
+{
+	free(s);
+	if (flag.ispts)
+		s = ft_strdup("0x");
+	else
+		s = ft_strdup("0x0");
+	return (s);
+}
+
+int			check_OX(t_printer printer, t_flag flag)
+{
+	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
+	{
+		if (!flag.neg && !flag.dash)
+			return (1);
+	}
+	return(0);
+}
+
 t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
 	t_printer	printer;
-	char		*tmp;
 
 	flag.letter = str[res.i];
 	if (flag.letter == 'p' && flag.precis != 0 && flag.isprecision == 1)
 		flag.precis = flag.precis + 2;
 	if (flag.letter == 'p' && !s)
-	{
-		free(s);
-		if (flag.ispts)
-			s = ft_strdup("0x");
-		else
-			s = ft_strdup("0x0");
-	}
+		s = manage_p_null(s, flag);
 	if (flag.letter != 'p' && flag.ispts == 1)
 		flag.isprecision = 1;
 	printer = manage_precis(flag, s, str, res);
 	printer = manage_width(printer.flag, printer.s, printer.res);
 	flag = printer.flag;
 	res = printer.res;
-	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x") && !flag.neg && !flag.dash)
+	if (check_OX(printer, flag))
 		printer.s = put_it_first(printer.s, "0x");
 	if (printer.flag.null)
-	{
-		tmp = ft_strdup(printer.s);
-		flag.width--;
-		if (!flag.neg)
-		{
-			free(printer.res.str);
-			printer.res.str = ft_strdup("");
-			while (flag.width-- >= 0)
-			{
-				printer.res.str = ft_joinchar2(printer.res.str, ' ');
-				printer.res.max++;
-			}
-			if (printer.flag.null)
-			{
-				if (ft_strcmp("", printer.res.str))
-				{
-					if (flag.width == 2)
-						printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 1);
-					else
-						printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 0);
-				}
-				else
-				{
-					printer.res.str = ft_joinchar2(printer.res.str, '\0');
-					printer.res.max++;
-				}
-				printer.res.max++;
-			}
-		}
-		if (flag.neg)
-		{
-			char	*str;
-			int		i;
-
-			i = 0;
-			str = get_malloc(flag.width + 2);
-			str[i] = '\0';
-			i++;
-			printer.res.max++;
-			while (flag.width-- > 0)
-			{
-				str[i] = ' ';
-				i++;
-				printer.res.max++;
- 			}
-			str[i] = '\0';
-			free(printer.res.str);
-			printer.res.str = str;
-			printer.res.max++;
-		}
-		free(printer.s);
-		free(tmp);
-		printer.res.i++;
-	}
+		printer = manage_c(printer, flag);
 	else
 	{
 		printer.res.str = printer.s;

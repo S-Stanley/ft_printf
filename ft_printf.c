@@ -43,7 +43,7 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 
 t_proxy		printf_true(t_proxy render, const char *str, va_list data)
 {
-	t_res 	res;
+	t_res	res;
 	t_flag	flag;
 	t_x		*prt;
 
