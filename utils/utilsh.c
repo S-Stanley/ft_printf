@@ -62,7 +62,7 @@ char		*ft_make_it_neg(char *s)
 	return (s2);
 }
 
-char		*ft_joinchar_null(char *str, int max, int add)
+char		*jcn(char *str, int max, int add)
 {
 	int		i;
 	char	*s;

@@ -83,3 +83,23 @@ char		*ft_join_pass_null(char *s1, char *s2, int max, int max2)
 	free(s2);
 	return (s);
 }
+
+char		*manage_p_null(char *s, t_flag flag)
+{
+	free(s);
+	if (flag.ispts)
+		s = ft_strdup("0x");
+	else
+		s = ft_strdup("0x0");
+	return (s);
+}
+
+int			check_ox(t_printer printer, t_flag flag)
+{
+	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
+	{
+		if (!flag.neg && !flag.dash)
+			return (1);
+	}
+	return (0);
+}

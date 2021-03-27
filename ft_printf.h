@@ -145,10 +145,12 @@ char			*add_left_pos2(int size_min, char *s, char sep, int size);
 char			*add_left_neg2(int size_min, int size, char sep, char *s);
 char			*add_left_n_else2(char *s, int size, char sep, int minus);
 char			*ft_make_it_neg(char *s);
-char			*ft_joinchar_null(char *str, int max, int add);
+char			*jcn(char *str, int max, int add);
 char			*ft_joinchar_pass_null(char *str, char c, int max, int add);
 t_x				*ft_lst_add_back(t_x *old, t_res res, t_flag flag);
 int				ft_read_lst(t_x *res);
 t_container		get_container_value(unsigned long long n);
+char			*manage_p_null(char *s, t_flag flag);
+int				check_ox(t_printer printer, t_flag flag);
 
 #endif

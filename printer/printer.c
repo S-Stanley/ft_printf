@@ -26,9 +26,9 @@ t_printer	manage_c_pos(t_printer printer, t_flag flag)
 		if (ft_strcmp("", printer.res.str))
 		{
 			if (flag.width == 2)
-				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 1);
+				printer.res.str = jcn(printer.res.str, printer.res.max, 1);
 			else
-				printer.res.str = ft_joinchar_null(printer.res.str, printer.res.max, 0);
+				printer.res.str = jcn(printer.res.str, printer.res.max, 0);
 		}
 		else
 		{
@@ -79,26 +79,6 @@ t_printer	manage_c(t_printer printer, t_flag flag)
 	return (printer);
 }
 
-char		*manage_p_null(char *s, t_flag flag)
-{
-	free(s);
-	if (flag.ispts)
-		s = ft_strdup("0x");
-	else
-		s = ft_strdup("0x0");
-	return (s);
-}
-
-int			check_OX(t_printer printer, t_flag flag)
-{
-	if (printer.flag.letter == 'p' && ft_find(printer.s, "0x"))
-	{
-		if (!flag.neg && !flag.dash)
-			return (1);
-	}
-	return(0);
-}
-
 t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 {
 	t_printer	printer;
@@ -114,7 +94,7 @@ t_printer	printer_proxy(t_flag flag, char *str, char *s, t_res res)
 	printer = manage_width(printer.flag, printer.s, printer.res);
 	flag = printer.flag;
 	res = printer.res;
-	if (check_OX(printer, flag))
+	if (check_ox(printer, flag))
 		printer.s = put_it_first(printer.s, "0x");
 	if (printer.flag.null)
 		printer = manage_c(printer, flag);
@@ -139,11 +119,12 @@ t_printer	ft_printer(char *str, t_res res, va_list data, t_flag flag)
 	flag = gvalue.flag;
 	if (flag.precis == 0 && str[res.i] == 'c')
 		flag.precis = 1;
-	if (gvalue.str && gvalue.str[0] == '\0' && gvalue.str[1] == '\0' && str[res.i] == 'c')
-	{
-		flag.null = 1;
-		flag.count_null++;
-	}
+	if (gvalue.str && gvalue.str[0] == '\0')
+		if (gvalue.str[1] == '\0' && str[res.i] == 'c')
+		{
+			flag.null = 1;
+			flag.count_null++;
+		}
 	if (str[res.i] == 'p' && !gvalue.str)
 		return (printer_proxy(flag, str, gvalue.str, res));
 	printer = return_it_now(flag, str, gvalue.str, res);
