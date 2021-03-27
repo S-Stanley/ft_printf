@@ -20,7 +20,7 @@
 
 typedef struct	s_container {
 	int				i;
- 	long int		container;
+	long int		container;
 }				t_container;
 
 typedef struct	s_x {
@@ -57,6 +57,7 @@ typedef struct	s_flag {
 typedef struct	s_proxy {
 	t_res	res;
 	t_flag	flag;
+	t_x		*prt;
 }				t_proxy;
 
 typedef struct	s_jchar {

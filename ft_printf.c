@@ -41,40 +41,57 @@ t_proxy		ft_proxy(char *str, t_res res, va_list data, t_flag flag)
 	return (render);
 }
 
+t_proxy		printf_true(t_proxy render, const char *str, va_list data)
+{
+	t_res 	res;
+	t_flag	flag;
+	t_x		*prt;
+
+	prt = NULL;
+	res = render.res;
+	prt = render.prt;
+	flag = render.flag;
+	res.str = NULL;
+	flag = re_init_flags(flag);
+	render = ft_proxy((char *)str, res, data, flag);
+	prt = ft_lst_add_back(prt, render.res, render.flag);
+	render.res.max = 1;
+	render.prt = prt;
+	return (render);
+}
+
+t_proxy		printf_false(t_res res, t_flag flag, t_x *prt, const char *str)
+{
+	t_proxy render;
+
+	res.str = ft_joinchar2(ft_strdup(""), str[res.i]);
+	res.i++;
+	res.max++;
+	flag.null = 0;
+	prt = ft_lst_add_back(prt, res, flag);
+	res.max = 0;
+	render.res = res;
+	render.flag = flag;
+	render.prt = prt;
+	return (render);
+}
+
 int			ft_printf(const char *str, ...)
 {
 	va_list	data;
-	t_res	res;
-	t_flag	flag;
 	t_proxy	render;
-	t_x		*prt;
 
 	va_start(data, str);
-	res = init_res();
-	flag = init_flags();
-	prt = NULL;
-	while (str[res.i])
+	render.res = init_res();
+	render.flag = init_flags();
+	render.prt = NULL;
+	while (str[render.res.i])
 	{
-		if (str[res.i] == '%')
-		{
-			res.str = NULL;
-			flag = re_init_flags(flag);
-			render = ft_proxy((char *)str, res, data, flag);
-			prt = ft_lst_add_back(prt, render.res, render.flag);
-			res = render.res;
-			res.max = 1;
-			flag = render.flag;
-		}
+		if (str[render.res.i] == '%')
+			render = printf_true(render, str, data);
 		else
-		{
-			res.str = ft_joinchar2(ft_strdup(""), str[res.i]);
-			res.i++;
-			res.max++;
-			flag.null = 0;
-			prt = ft_lst_add_back(prt, res, flag);
-			res.max = 0;
-		}
+			render = printf_false(render.res, render.flag, render.prt, str);
 	}
 	va_end(data);
-	return (ft_read_lst(prt));
+	return (ft_read_lst(render.prt));
 }
